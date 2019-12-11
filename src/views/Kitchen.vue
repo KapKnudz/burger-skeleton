@@ -1,6 +1,6 @@
 <template>
 <div id="orders">
-  <h1>{{ uiLabels.ordersInQueue }}</h1>
+  <h3>{{ uiLabels.ordersInQueue }}</h3>
   <div>
     <OrderItemToPrepare
       v-for="(order, key) in orders"
