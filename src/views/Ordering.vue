@@ -3,6 +3,7 @@
 
 <div id="head">
   <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+
   <div class="hamburgerIngredients">
     <div class="grid-button-item-1"><button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button> </div>
     <div class="grid-button-item-2"><button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button></div>
@@ -11,7 +12,6 @@
   </div>
 </div>
 
-</br>
 
 <h1 id="header"> {{uiLabels.welcomeSite}} </h1>
   <h1>{{ uiLabels.ingredients }}</h1>

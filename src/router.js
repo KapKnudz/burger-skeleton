@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
 import DoneOrders from './views/DoneOrders.vue'
+import Startpage from './views/Startpage.vue'
 
 Vue.use(Router)
 
@@ -14,6 +15,17 @@ let router = new Router({
       },
       name: 'ordering',
       component: Ordering
+    },
+    {
+    path: '/start',
+    meta: {
+      title: 'Welcome to Skrk',
+    },
+    name: 'startpage',
+    // route level code-splitting
+    // this generates a separate chunk (read.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: Startpage
     },
     {
       path: '/kitchen',
