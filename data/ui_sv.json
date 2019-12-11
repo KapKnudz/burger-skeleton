@@ -16,5 +16,7 @@
   "ingredients" : "Ingredienser",
   "ready" : "Klart",
   "order" : "Min burgare",
-  "language" : "English"
+  "language" : "English",
+  "startedOrders" : "Påbörjade beställningar",
+  "startOrder": "Påbörja beställningen"
 }

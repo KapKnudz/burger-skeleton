@@ -16,5 +16,7 @@
   "ingredients" : "Ingredients",
   "ready" : "Done",
   "order" : "My burger",
-  "language" : "Svenska"
+  "language" : "Svenska",
+  "startedOrders" : "Started orders",
+  "startOrder": "Start order"
 }
