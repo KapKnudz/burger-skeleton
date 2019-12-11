@@ -17,15 +17,11 @@
   "ready" : "Klart",
   "order" : "Min burgare",
   "language" : "English",
-<<<<<<< HEAD
   "startText": "Välkommen!",
   "eatHere" : "Äta här",
   "eatAway" : "Ta med",
-  "goBack" : "Tillbaka"
-}
-=======
+  "goBack" : "Tillbaka",
   "startedOrders" : "Påbörjade beställningar",
-<<<<<<< HEAD
   "startOrder": "Påbörja beställningen",
   "categoryMeat": "Protein",
   "categorySides": "Sidobeställningar",
@@ -33,8 +29,3 @@
   "categoryBread": "Bröd",
   "welcomeSite": "Välkomna till skurknästet"
 }
-=======
-  "startOrder": "Påbörja beställningen"
-}
->>>>>>> d91ff3d452817eaeb627a922351d449abbcc437d
->>>>>>> 1e98a1c825e9e006f26e2c653a57512168e87335

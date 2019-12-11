@@ -17,18 +17,15 @@
   "ready" : "Done",
   "order" : "My burger",
   "language" : "Svenska",
-<<<<<<< HEAD
+  "startText": "Welcome!",
+  "eatHere" : "Eat here",
+  "eatAway" : "Take out",
+  "goBack" : "Back",
   "startedOrders" : "Started orders",
   "startOrder": "Start order",
   "categoryMeat": "Protein",
   "categorySides": "Sideorders",
   "categorySauce": "Sauces",
   "categoryBread": "Bread",
-  "welcomeSite": "Welcome to the villain-nest"
-=======
-  "startText": "Welcome!",
-  "eatHere" : "Eat here",
-  "eatAway" : "Take out",
-  "goBack" : "Back"
->>>>>>> 1e98a1c825e9e006f26e2c653a57512168e87335
+  "welcomeSite": "Welcome to the villain-nest",
 }
