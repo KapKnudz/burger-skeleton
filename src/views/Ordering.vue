@@ -23,9 +23,10 @@
   <div id="ingredientBox">
     <Ingredient ref="ingredient"
     v-for="item in ingredients"
-    v-show="item.category==currentCategory"
+    v-show="item.category===currentCategory"
     v-on:increment="addToOrder(item)"
     v-on:decrease="reduceOrder(item)"
+    :count="item.counter"
     :item="item"
     :categoryNumber="currentCategory"
     :lang="lang"
@@ -34,11 +35,16 @@
   </div>
 
   <div id="placeOrderBox">
-    <h1>{{ uiLabels.order }}</h1> {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
+  <!--  <h1>{{ uiLabels.order }}</h1> {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr -->
+  <div v-for="ingredCounter in countAllIngredients"
+                     v-if="ingredCounter.count>0"
+                     :key="countAllIngredients.indexOf(ingredCounter)">
+                    {{ingredCounter.name}}: {{ingredCounter.count}} {{uiLabels.parts}},
+                </div>
+                {{uiLabels.totalPrice}}: {{price}} kr
     <button v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
   </div>
 
-  <h1>{{ uiLabels.ordersInQueue }}</h1>
   <div>
     <OrderItem v-for="(order, key) in orders" v-if="order.status !== 'done'" :order-id="key" :order="order" :ui-labels="uiLabels" :lang="lang" :key="key">
     </OrderItem>
@@ -82,6 +88,24 @@ export default {
       this.orderNumber = data;
     }.bind(this));
   },
+  computed: {
+    countAllIngredients: function () {
+                let ingredientTuples = []
+                for (let i = 0; i < this.chosenIngredients.length; i += 1) {
+                    ingredientTuples[i] = {};
+                    ingredientTuples[i].name = this.chosenIngredients[i]['ingredient_' + this.lang];
+                    ingredientTuples[i].count = this.countNumberOfIngredients(this.chosenIngredients[i].ingredient_id);
+                }
+                let allIngredients = Array.from(new Set(ingredientTuples.map(arrayName => arrayName.name))).map(name => {
+                        return {
+                            name: name,
+                            count: ingredientTuples.find(arrayName => arrayName.name === name).count
+                        };
+                    });
+                return allIngredients;
+            }
+        },
+
   methods: {
     showBurger: function(boolean) {
       this.hamburgerButtons = boolean;
@@ -101,7 +125,7 @@ export default {
     },
 
     reduceOrder: function(item) {
-      this.chosenIngredients.splice(item, 1);
+      this.chosenIngredients.splice(this.chosenIngredients.indexOf(item), 1);
       this.price += -item.selling_price;
     },
 
@@ -117,13 +141,25 @@ export default {
       this.$store.state.socket.emit('order', {
         order: order
       });
+
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
       }
       this.price = 0;
       this.chosenIngredients = [];
-    }
+      this.allIIngredients.clear
+    },
+    countNumberOfIngredients: function (id) {
+                let counter = 0;
+                for (var amountOfIngred in this.chosenIngredients) {
+                    //Now we have an array of ingredients in an order which is checked with the id that being sent from countAllIngredients in the call
+                    if (this.chosenIngredients[amountOfIngred].ingredient_id === id) {
+                        counter += 1;
+                    }
+                }
+                return counter;
+            }
   }
 }
 </script>
