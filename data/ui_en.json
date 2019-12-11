@@ -18,5 +18,10 @@
   "order" : "My burger",
   "language" : "Svenska",
   "startedOrders" : "Started orders",
-  "startOrder": "Start order"
+  "startOrder": "Start order",
+  "categoryMeat": "Protein",
+  "categorySides": "Sideorders",
+  "categorySauce": "Sauces",
+  "categoryBread": "Bread",
+  "welcomeSite": "Welcome to the villain-nest"
 }

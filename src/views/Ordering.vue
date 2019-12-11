@@ -4,16 +4,16 @@
 <div id="head">
   <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
   <div class="hamburgerIngredients">
-    <div class="grid-button-item-1"><button v-on:click="changeCategory(1)"> KÖTT </button> </div>
-    <div class="grid-button-item-2"><button v-on:click="changeCategory(2)"> PÅLÄGG </button></div>
-    <div class="grid-button-item-3"> <button v-on:click="changeCategory(3)"> SÅS </button></div>
-    <div class="grid-button-item-4"> <button v-on:click="changeCategory(4)"> BRÖD </button></div>
+    <div class="grid-button-item-1"><button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button> </div>
+    <div class="grid-button-item-2"><button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button></div>
+    <div class="grid-button-item-3"> <button v-on:click="changeCategory(3)"> {{uiLabels.categorySauce}} </button></div>
+    <div class="grid-button-item-4"> <button v-on:click="changeCategory(4)"> {{uiLabels.categoryBread}}</button></div>
   </div>
 </div>
 
 </br>
 
-<h1 id="header"> Välkomna till skurknästet </h1>
+<h1 id="header"> {{uiLabels.welcomeSite}} </h1>
   <h1>{{ uiLabels.ingredients }}</h1>
 
   <div id="gridInner">
@@ -33,6 +33,7 @@
     <h1>{{ uiLabels.order }}</h1> {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
     <button v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
   </div>
+
   <h1>{{ uiLabels.ordersInQueue }}</h1>
   <div>
     <OrderItem v-for="(order, key) in orders" v-if="order.status !== 'done'" :order-id="key" :order="order" :ui-labels="uiLabels" :lang="lang" :key="key">
@@ -149,7 +150,9 @@ export default {
 
 #test {
   position: fixed;
-  top:0;
+  display:block;
+  box-sizing:border-box;
+  top:250px;
   right:0;
   border: 3px solid #73AD21;
   color: green;
