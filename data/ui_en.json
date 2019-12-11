@@ -16,5 +16,9 @@
   "ingredients" : "Ingredients",
   "ready" : "Done",
   "order" : "My burger",
-  "language" : "Svenska"
+  "language" : "Svenska",
+  "startText": "Welcome!",
+  "eatHere" : "Eat here",
+  "eatAway" : "Take out",
+  "goBack" : "Back"
 }

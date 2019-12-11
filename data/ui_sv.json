@@ -16,5 +16,9 @@
   "ingredients" : "Ingredienser",
   "ready" : "Klart",
   "order" : "Min burgare",
-  "language" : "English"
+  "language" : "English",
+  "startText": "Välkommen!",
+  "eatHere" : "Äta här",
+  "eatAway" : "Ta med",
+  "goBack" : "Tillbaka"
 }
