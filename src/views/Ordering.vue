@@ -7,9 +7,9 @@
 
   <div class="hamburgerIngredients">
     <div class="grid-button-item-1"><button v-on:click="changeCategory(1)"> KÖTT </button> </div>
-    <div class="grid-button-item-1"><button v-on:click="changeCategory(2)"> PÅLÄGG </button></div>
-    <div class="grid-button-item-2"> <button v-on:click="changeCategory(3)"> SÅS </button></div>
-    <div class="grid-button-item-2"> <button v-on:click="changeCategory(4)"> BRÖD </button></div>
+    <div class="grid-button-item-2"><button v-on:click="changeCategory(2)"> PÅLÄGG </button></div>
+    <div class="grid-button-item-3"> <button v-on:click="changeCategory(3)"> SÅS </button></div>
+    <div class="grid-button-item-4"> <button v-on:click="changeCategory(4)"> BRÖD </button></div>
   </div>
 
   <h1>{{ uiLabels.ingredients }}</h1>
@@ -137,9 +137,9 @@ export default {
 }
 
 #test {
-  position: relative;
-  left: 790px;
-  bottom: 1600px;
+  position: fixed;
+  top:0;
+  right:0;
   border: 3px solid #73AD21;
   color: green;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -153,15 +153,17 @@ export default {
   top: 0;
   z-index: 2;
 }
+
 .hamburgerIngredients {
-display: grid;
-grid-template-columns: auto auto auto auto;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
 }
 
 .hamburgerIngredients button {
   color: #FFFFFF;
+  border-style:dashed;
   opacity: 0.9;
-  width: 200px;
+  width: 275px;
   padding: 50px;
   border-radius: 20px;
   background-color: black;
@@ -173,17 +175,35 @@ grid-template-columns: auto auto auto auto;
 }
 
 .grid-button-item-1 {
-  grid-row: 1;
+  grid-column: 1;
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
+  padding: 1px;
   font-size: 30px;
   text-align: center;
 }
 
 .grid-button-item-2 {
-  grid-row: 2;
+  grid-column: 2;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1px;
+  font-size: 30px;
+  text-align: center;
 }
+.grid-button-item-3 {
+  grid-column: 3;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1px;
+  font-size: 30px;
+  text-align: center;
+}
+.grid-button-item-4 {
+  grid-column: 4;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1px;
+  font-size: 30px;
+  text-align: center;
+}
+
 
 .ingredient {
   border: 3px solid #ccd;
