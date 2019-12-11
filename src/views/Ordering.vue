@@ -2,7 +2,11 @@
 <div id="ordering">
 
 <div id="head">
-  <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+
+  <button id='langButton' v-on:click='switchLang()'>
+    <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src= '@/assets/englishflag.jpg' width="30px" height="20px">
+    <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src= '@/assets/swedishflag.jpg' width="30px" height="20px">
+  </button>
 
   <div class="hamburgerIngredients">
     <div class="grid-button-item-1"><button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button> </div>
@@ -125,6 +129,13 @@ export default {
 </script>
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
+#langButton{
+  position: absolute;
+  right: 50px;
+  top: 150px;
+  background: transparent;
+  border-color: transparent;
+  }
 
 #ordering {
   width: 40em;
