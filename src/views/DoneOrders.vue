@@ -1,7 +1,9 @@
 <template>
   <div id="orders">
     <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+    <div class = "row" align = "left">
 
+      <div class = "column left">
     <h1>{{ uiLabels.ordersFinished }}</h1>
     <div>
       <OrderItem
@@ -15,6 +17,8 @@
               :key="key">
       </OrderItem>
     </div>
+  </div>
+  </div>
   </div>
 </template>
 <script>
@@ -53,5 +57,24 @@
   h1 {
     text-transform: uppercase;
     font-size: 1.4em;
+    color: dimgray;
+  }
+
+  .row {
+    display: flex;
+    height: 90%;
+  }
+  .column {
+    border: solid #5a1800;
+    border-width: 5px;
+    margin: -1px;
+    padding: 20px;
+    height: 1000px;
+  }
+
+  .left {
+    width: 100%;
+    float: left;
+    overflow: scroll;
   }
 </style>

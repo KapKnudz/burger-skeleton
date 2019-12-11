@@ -1,9 +1,8 @@
 <template>
 <div id="ordering">
 
+<div id="head">
   <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-
-  <h1 id="header"> Välkomna till skurknästet </h1>
 
   <div class="hamburgerIngredients">
     <div class="grid-button-item-1"><button v-on:click="changeCategory(1)"> KÖTT </button> </div>
@@ -11,11 +10,22 @@
     <div class="grid-button-item-3"> <button v-on:click="changeCategory(3)"> SÅS </button></div>
     <div class="grid-button-item-4"> <button v-on:click="changeCategory(4)"> BRÖD </button></div>
   </div>
+</div>
 
+
+<h1 id="header"> Välkomna till skurknästet </h1>
   <h1>{{ uiLabels.ingredients }}</h1>
 
   <div id="gridInner">
-    <Ingredient ref="ingredient" v-for="item in ingredients" v-on:increment="addToOrder(item)" v-on:decrease="reduceOrder(item)" :item="item" :categoryNumber="currentCategory" :lang="lang" :key="item.ingredient_id">
+    <Ingredient ref="ingredient"
+    v-for="item in ingredients"
+    v-show="item.category==currentCategory"
+    v-on:increment="addToOrder(item)"
+    v-on:decrease="reduceOrder(item)"
+    :item="item"
+    :categoryNumber="currentCategory"
+    :lang="lang"
+    :key="item.ingredient_id">
     </Ingredient>
   </div>
 
@@ -125,6 +135,7 @@ export default {
   font-size: 50px;
   font-style: italic;
   position: relative;
+  top:85px;
   left: 450px;
 }
 
@@ -144,6 +155,14 @@ export default {
   color: green;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
+#head {
+position: fixed;
+top: 0;
+right: 0;
+left: 0;
+z-index: 101;
+background-color:black;
+}
 
 .example-panel {
   position: fixed;
@@ -155,8 +174,10 @@ export default {
 }
 
 .hamburgerIngredients {
+
   display: grid;
   grid-template-columns: auto auto auto auto;
+
 }
 
 .hamburgerIngredients button {
@@ -176,7 +197,6 @@ export default {
 
 .grid-button-item-1 {
   grid-column: 1;
-  background-color: rgba(255, 255, 255, 0.8);
   padding: 1px;
   font-size: 30px;
   text-align: center;
@@ -184,21 +204,18 @@ export default {
 
 .grid-button-item-2 {
   grid-column: 2;
-  background-color: rgba(255, 255, 255, 0.8);
   padding: 1px;
   font-size: 30px;
   text-align: center;
 }
 .grid-button-item-3 {
   grid-column: 3;
-  background-color: rgba(255, 255, 255, 0.8);
   padding: 1px;
   font-size: 30px;
   text-align: center;
 }
 .grid-button-item-4 {
   grid-column: 4;
-  background-color: rgba(255, 255, 255, 0.8);
   padding: 1px;
   font-size: 30px;
   text-align: center;

@@ -2,7 +2,7 @@
   <div id="orders">
 
     <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-
+    <div class = "row" align = "center">
     <div class = "column left">
       <div align = "left">
        
@@ -20,8 +20,8 @@
       </div>
     </div>
 
-    <div class = "column right">
-      <div align = "right">
+    <div class = "column left">
+      <div align = "left">
         <h1>{{ uiLabels.startedOrders }}</h1>
         <OrderItemToPrepare
                 id = "started_orders"
@@ -37,6 +37,7 @@
         </OrderItemToPrepare>
       </div>
     </div>
+</div>
 
   </div>
 </template>
@@ -85,5 +86,23 @@
   h1 {
     text-transform: uppercase;
     font-size: 1.4em;
+    color: dimgray;
+  }
+  .row {
+    display: flex;
+    height: 90%;
+  }
+  .column {
+    border: solid #5a1800;
+    border-width: 5px;
+    margin: -1px;
+    padding: 20px;
+    height: 800px;
+  }
+
+  .left {
+    width: 50%;
+    float: left;
+    overflow: scroll;
   }
 </style>

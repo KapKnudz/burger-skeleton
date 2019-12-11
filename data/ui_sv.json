@@ -17,8 +17,14 @@
   "ready" : "Klart",
   "order" : "Min burgare",
   "language" : "English",
+<<<<<<< HEAD
   "startText": "Välkommen!",
   "eatHere" : "Äta här",
   "eatAway" : "Ta med",
   "goBack" : "Tillbaka"
 }
+=======
+  "startedOrders" : "Påbörjade beställningar",
+  "startOrder": "Påbörja beställningen"
+}
+>>>>>>> d91ff3d452817eaeb627a922351d449abbcc437d
