@@ -1,18 +1,18 @@
 <template>
 <div id="ordering">
 
-<div id="head">
+<div id="fixedCategoryTab">
 
   <button id='langButton' v-on:click='switchLang()'>
     <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src= '@/assets/englishflag.jpg' width="30px" height="20px">
     <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src= '@/assets/swedishflag.jpg' width="30px" height="20px">
   </button>
 
-  <div class="hamburgerIngredients">
-    <div class="grid-button-item-1"><button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button> </div>
-    <div class="grid-button-item-2"><button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button></div>
-    <div class="grid-button-item-3"> <button v-on:click="changeCategory(3)"> {{uiLabels.categorySauce}} </button></div>
-    <div class="grid-button-item-4"> <button v-on:click="changeCategory(4)"> {{uiLabels.categoryBread}}</button></div>
+  <div class="categoryList">
+    <div class="categoryList-item-1"><button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button> </div>
+    <div class="categoryList-item-2"><button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button></div>
+    <div class="categoryList-item-3"> <button v-on:click="changeCategory(3)"> {{uiLabels.categorySauce}} </button></div>
+    <div class="categoryList-item-4"> <button v-on:click="changeCategory(4)"> {{uiLabels.categoryBread}}</button></div>
   </div>
 </div>
 
@@ -20,7 +20,7 @@
 <h1 id="header"> {{uiLabels.welcomeSite}} </h1>
   <h1>{{ uiLabels.ingredients }}</h1>
 
-  <div id="gridInner">
+  <div id="ingredientBox">
     <Ingredient ref="ingredient"
     v-for="item in ingredients"
     v-show="item.category==currentCategory"
@@ -33,7 +33,7 @@
     </Ingredient>
   </div>
 
-  <div id="test">
+  <div id="placeOrderBox">
     <h1>{{ uiLabels.order }}</h1> {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
     <button v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
   </div>
@@ -151,7 +151,7 @@ export default {
   left: 450px;
 }
 
-#gridInner {
+#ingredientBox {
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(4, 1fr);
@@ -159,7 +159,7 @@ export default {
   justify-content: space-evenly;
 }
 
-#test {
+#placeOrderBox {
   position: fixed;
   display:block;
   box-sizing:border-box;
@@ -169,7 +169,7 @@ export default {
   color: green;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
-#head {
+#fixedCategoryTab {
 position: fixed;
 top: 0;
 right: 0;
@@ -187,14 +187,14 @@ background-color:black;
   z-index: 2;
 }
 
-.hamburgerIngredients {
+.categoryList {
 
   display: grid;
   grid-template-columns: auto auto auto auto;
 
 }
 
-.hamburgerIngredients button {
+.categoryList button {
   color: #FFFFFF;
   border-style:dashed;
   opacity: 0.9;
@@ -204,31 +204,31 @@ background-color:black;
   background-color: black;
 }
 
-.hamburgerIngredients button:hover {
+.categoryList button:hover {
   background-color: green;
   color: white;
 }
 
-.grid-button-item-1 {
+.categoryList-item-1 {
   grid-column: 1;
   padding: 1px;
   font-size: 30px;
   text-align: center;
 }
 
-.grid-button-item-2 {
+.categoryList-item-2 {
   grid-column: 2;
   padding: 1px;
   font-size: 30px;
   text-align: center;
 }
-.grid-button-item-3 {
+.categoryList-item-3 {
   grid-column: 3;
   padding: 1px;
   font-size: 30px;
   text-align: center;
 }
-.grid-button-item-4 {
+.categoryList-item-4 {
   grid-column: 4;
   padding: 1px;
   font-size: 30px;
