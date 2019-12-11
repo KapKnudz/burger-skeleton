@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
+import DoneOrders from './views/DoneOrders.vue'
 
 Vue.use(Router)
 
@@ -20,11 +21,22 @@ let router = new Router({
         title: 'Kitchen',
       },
       name: 'kitchen',
+
       // route level code-splitting
       // this generates a separate chunk (read.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "read" */ './views/Kitchen.vue')
-    }
+    },
+    {
+      path:'/DoneOrders',
+      meta: {
+        title: 'Done Orders'
+      },
+      name: DoneOrders,
+      component: DoneOrders
+    },
+
+
   ]
 })
 
