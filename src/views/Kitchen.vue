@@ -5,7 +5,7 @@
 
     <div class = "column left">
       <div align = "left">
-        <h1>{{ uiLabels.ordersInQueue }}</h1>
+       
         <OrderItemToPrepare
                 id = "order_in_que"
                 v-for="(order, key) in orders"
