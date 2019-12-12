@@ -19,7 +19,7 @@
   "language" : "English",
   "startText": "Välkommen!",
   "eatHere" : "Äta här",
-  "eatAway" : "Ta med",
+  "eatAway" : "Hemleverans",
   "goBack" : "Tillbaka",
   "startedOrders" : "Påbörjade beställningar",
   "startOrder": "Påbörja beställningen",
@@ -29,5 +29,6 @@
   "categoryBread": "Bröd",
   "welcomeSite": "Välkomna till skurknästet",
   "totalPrice": "Hela priset",
-  "parts": "stycken"
+  "parts": "stycken",
+  "goBack": "Tillbaka"
 }

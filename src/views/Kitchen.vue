@@ -5,6 +5,7 @@
     <div class = "row" align = "center">
     <div class = "column left">
       <div align = "left">
+
         <h1>{{ uiLabels.ordersInQueue }}</h1>
 
         <OrderItemToPrepare

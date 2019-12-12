@@ -8,6 +8,8 @@
     <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src= '@/assets/swedishflag.jpg' width="30px" height="20px">
   </button>
 
+  <button class="backButtons" type="button" onclick="window.location = '/#/start';" > {{uiLabels.goBack}}  </button>
+
   <div class="categoryList">
     <div class="categoryList-item-1"><button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button> </div>
     <div class="categoryList-item-2"><button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button></div>
@@ -45,10 +47,7 @@
     <button v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
   </div>
 
-  <div>
-    <OrderItem v-for="(order, key) in orders" v-if="order.status !== 'done'" :order-id="key" :order="order" :ui-labels="uiLabels" :lang="lang" :key="key">
-    </OrderItem>
-  </div>
+
 
 
 </div>
@@ -173,8 +172,19 @@ export default {
   border-color: transparent;
   }
 
+.backButtons{
+  position: absolute;
+  border-radius: 3px;
+  border: 4px solid grey;
+  font-size:14pt;
+  right: 55px;
+  top: 190px;
+  background: green;
+  border-color: green;
+}
 #ordering {
   width: 40em;
+  font-family: 'Archivo Narrow',sans-serif;
 }
 
 #header {
@@ -196,14 +206,25 @@ export default {
 }
 
 #placeOrderBox {
+font-family: 'Mansalva',cursive;
   position: fixed;
   display:block;
   box-sizing:border-box;
+  background-color: rgb(255, 255, 255);
+  width: 340px;
+  min-width: 340px;
+  background-color: rgb(255, 255, 255);
+  height: calc(100vh - 48px);
+  overflow-y: auto;
+  position: fixed;
+  z-index: 100;
   top:250px;
-  right:0;
-  border: 3px solid #73AD21;
-  color: green;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  right: 0px;
+  border-top:1px solid rgb(196, 196, 196);
+  border-left: 1px solid rgb(196, 196, 196);
+  text-align:center;
+  font-family: 'Archivo Narrow',sans-serif;
+  font-size: 24px;
 }
 #fixedCategoryTab {
 position: fixed;
@@ -224,9 +245,8 @@ background-color:black;
 }
 
 .categoryList {
-
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 200px 720px -200px 0px;
 
 }
 
@@ -234,41 +254,31 @@ background-color:black;
   color: #FFFFFF;
   border-style:dashed;
   opacity: 0.9;
-  width: 275px;
-  padding: 50px;
-  border-radius: 20px;
+  width: 358px;
+  padding: 40px;
   background-color: black;
+  border-radius:50px;
+  font-size:30px;
 }
 
 .categoryList button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   background-color: green;
   color: white;
 }
 
 .categoryList-item-1 {
   grid-column: 1;
-  padding: 1px;
-  font-size: 30px;
-  text-align: center;
 }
 
 .categoryList-item-2 {
   grid-column: 2;
-  padding: 1px;
-  font-size: 30px;
-  text-align: center;
 }
 .categoryList-item-3 {
   grid-column: 3;
-  padding: 1px;
-  font-size: 30px;
-  text-align: center;
 }
 .categoryList-item-4 {
   grid-column: 4;
-  padding: 1px;
-  font-size: 30px;
-  text-align: center;
 }
 
 
@@ -276,7 +286,6 @@ background-color:black;
   border: 3px solid #ccd;
   padding: 10px;
   color: white;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
   background-image: url('~@/assets/exampleImage.jpg');
 }
 </style>
