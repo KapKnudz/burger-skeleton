@@ -2,7 +2,7 @@
   <div id="app">
     <router-view/>
     <div class="footer">
-      <p>FOOTER</p>
+      <p>Skurknästet Inc </p>
     </div>
   </div>
 </template>

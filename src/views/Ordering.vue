@@ -1,5 +1,11 @@
 <template>
 <div id="ordering">
+  <div class="startpage-container">
+    <div class='startpage'>
+      <h1 id="startHead"> {{uiLabels.welcomeSite}} </h1>
+    </div>
+  </div>
+
 
 <div id="fixedCategoryTab">
 
@@ -11,15 +17,14 @@
   <button class="backButtons" type="button" onclick="window.location = '/#/start';" > {{uiLabels.goBack}}  </button>
 
   <div class="categoryList">
-    <div class="categoryList-item-1"><button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button> </div>
-    <div class="categoryList-item-2"><button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button></div>
-    <div class="categoryList-item-3"> <button v-on:click="changeCategory(3)"> {{uiLabels.categorySauce}} </button></div>
-    <div class="categoryList-item-4"> <button v-on:click="changeCategory(4)"> {{uiLabels.categoryBread}}</button></div>
+    <button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button>
+    <button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button>
+     <button v-on:click="changeCategory(3)"> {{uiLabels.categorySauce}} </button>
+    <button v-on:click="changeCategory(4)"> {{uiLabels.categoryBread}}</button>
   </div>
 </div>
 
 
-<h1 id="header"> {{uiLabels.welcomeSite}} </h1>
   <h1>{{ uiLabels.ingredients }}</h1>
 
   <div id="ingredientBox">
@@ -162,58 +167,78 @@ export default {
   }
 }
 </script>
-<style scoped>
-/* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
-#langButton{
+ <style scoped>
+.startpage-container {
+  text-align: center;
+}
+.startpage {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('~@/assets/background.jpg');
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#langButton {
   position: absolute;
+  top: 30px;
   right: 50px;
-  top: 150px;
+  padding: 0;
+  margin: 0;
   background: transparent;
-  border-color: transparent;
-  }
-
-.backButtons{
-  position: absolute;
-  border-radius: 3px;
-  border: 4px solid grey;
-  font-size:14pt;
-  right: 55px;
-  top: 190px;
-  background: green;
-  border-color: green;
+  border: transparent;
 }
-#ordering {
-  width: 40em;
-  font-family: 'Archivo Narrow',sans-serif;
+#langPic {
+  height: 100%;
 }
-
-#header {
-  color: green;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  font-size: 50px;
-  font-style: italic;
-  position: relative;
-  top:85px;
-  left: 450px;
+.categoryList {
+  display: flex;
+  flex-direction: row;
+  border-color:white;
 }
+.categoryList button {
+  color: #FFFFFF;
+  width: 150px;
+  padding: 40px;
+  opacity:0.6;
+  background: black;
+  border-radius:5em;
+  font-size: 1em;
+}
+.categoryList button:hover {
+  box-shadow: 0 20px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: green;
+  color: white;
+}
+/* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates.
+*/
 
 #ingredientBox {
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto auto auto;
-  justify-content: space-evenly;
+  display: flex;
+
+  flex-flow:row wrap;
+  background:transparent;
+  border:transparent;
+  font-size: 1.1em;
+  width:10em;
+
 }
 
+/*
+
 #placeOrderBox {
-font-family: 'Mansalva',cursive;
+  text-align:center;
+  font-family: 'Mansalva',cursive;
   position: fixed;
   display:block;
   box-sizing:border-box;
   background-color: rgb(255, 255, 255);
   width: 340px;
   min-width: 340px;
-  background-color: rgb(255, 255, 255);
   height: calc(100vh - 48px);
   overflow-y: auto;
   position: fixed;
@@ -222,17 +247,8 @@ font-family: 'Mansalva',cursive;
   right: 0px;
   border-top:1px solid rgb(196, 196, 196);
   border-left: 1px solid rgb(196, 196, 196);
-  text-align:center;
   font-family: 'Archivo Narrow',sans-serif;
   font-size: 24px;
-}
-#fixedCategoryTab {
-position: fixed;
-top: 0;
-right: 0;
-left: 0;
-z-index: 101;
-background-color:black;
 }
 
 .example-panel {
@@ -244,48 +260,10 @@ background-color:black;
   z-index: 2;
 }
 
-.categoryList {
-  display: grid;
-  grid-template-columns: 200px 720px -200px 0px;
-
-}
-
-.categoryList button {
-  color: #FFFFFF;
-  border-style:dashed;
-  opacity: 0.9;
-  width: 358px;
-  padding: 40px;
-  background-color: black;
-  border-radius:50px;
-  font-size:30px;
-}
-
-.categoryList button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  background-color: green;
-  color: white;
-}
-
-.categoryList-item-1 {
-  grid-column: 1;
-}
-
-.categoryList-item-2 {
-  grid-column: 2;
-}
-.categoryList-item-3 {
-  grid-column: 3;
-}
-.categoryList-item-4 {
-  grid-column: 4;
-}
-
-
 .ingredient {
   border: 3px solid #ccd;
   padding: 10px;
   color: white;
   background-image: url('~@/assets/exampleImage.jpg');
-}
+}*/
 </style>
