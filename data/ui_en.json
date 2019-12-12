@@ -29,5 +29,6 @@
   "categoryBread": "Bread",
   "welcomeSite": "Welcome to the villain-nest",
   "totalPrice": "Total price",
-  "parts": "pieces"
+  "parts": "pieces",
+  "goBack" : "Back"
 }

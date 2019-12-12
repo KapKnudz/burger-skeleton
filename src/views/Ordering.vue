@@ -8,6 +8,8 @@
     <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src= '@/assets/swedishflag.jpg' width="30px" height="20px">
   </button>
 
+  <button class="backButtons" type="button" onclick="window.location = '/#/start';" > {{uiLabels.goBack}}  </button>
+
   <div class="categoryList">
     <div class="categoryList-item-1"><button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button> </div>
     <div class="categoryList-item-2"><button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button></div>
@@ -170,6 +172,16 @@ export default {
   border-color: transparent;
   }
 
+.backButtons{
+  position: absolute;
+  border-radius: 3px;
+  border: 4px solid grey;
+  font-size:14pt;
+  right: 55px;
+  top: 190px;
+  background: green;
+  border-color: green;
+}
 #ordering {
   width: 40em;
 }
