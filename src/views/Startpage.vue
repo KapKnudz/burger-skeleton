@@ -55,13 +55,12 @@
 }
 
 .startButtons {
-    background-color: #white;
-    border-radius: 20px;
+    background-color: #grey;
+    border-radius: 10px;
     border: 5px solid grey;
     color: black;
     font-size: 16pt;
     font-variant: small-caps;
-    padding: 10px;
     text-align: center;
   }
 
