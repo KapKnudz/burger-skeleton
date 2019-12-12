@@ -5,11 +5,12 @@
     <div class = "row" align = "center">
     <div class = "column left">
       <div align = "left">
-       
+        <h1>{{ uiLabels.ordersInQueue }}</h1>
+
         <OrderItemToPrepare
                 id = "order_in_que"
                 v-for="(order, key) in orders"
-                v-if="order.status !== 'done'"
+                v-if="order.status === 'not-started'"
                 v-on:next="markStarted(key)"
                 :order-id="key"
                 :order="order"
@@ -39,6 +40,7 @@
     </div>
 </div>
 
+
   </div>
 </template>
 <script>
@@ -67,7 +69,7 @@
         this.$store.state.socket.emit("orderDone", orderid);
       },
       markStarted: function (orderid) {
-        this.$store.state.socket.emit("startedOrder", orderid);
+        this.$store.state.socket.emit("orderStarted", orderid);
       },
       markBack: function (orderid){
         this.$store.state.socket.emit("orderNotStarted", orderid);
@@ -105,4 +107,5 @@
     float: left;
     overflow: scroll;
   }
+
 </style>
