@@ -5,7 +5,7 @@
     <div class = "row" align = "center">
     <div class = "column left">
       <div align = "left">
-       
+
         <OrderItemToPrepare
                 id = "order_in_que"
                 v-for="(order, key) in orders"

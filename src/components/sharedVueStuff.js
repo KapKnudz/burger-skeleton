@@ -19,6 +19,7 @@ var sharedVueStuff = {
       this.orders = data.orders;
       this.uiLabels = data.uiLabels;
       this.ingredients = data.ingredients;
+      console.log(this.uiLabels)
     }.bind(this));
 
     this.$store.state.socket.on('switchLang', function (data) {
