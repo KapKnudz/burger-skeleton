@@ -190,8 +190,8 @@ export default {
   border: transparent;
 }
 #langPic {
-  height: 100%;
-}
+    height: 100%;
+  }
 .categoryList {
   display: flex;
   flex-direction: row;
