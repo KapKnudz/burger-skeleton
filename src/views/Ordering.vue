@@ -7,48 +7,37 @@
   </div>
 
 
-<div id="fixedCategoryTab">
+  <div id="fixedCategoryTab">
 
-  <button id='langButton' v-on:click='switchLang()'>
-    <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src= '@/assets/englishflag.jpg' width="30px" height="20px">
-    <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src= '@/assets/swedishflag.jpg' width="30px" height="20px">
-  </button>
+    <button id='langButton' v-on:click='switchLang()'>
+      <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
+      <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
+    </button>
 
-  <button class="backButtons" type="button" onclick="window.location = '/#/start';" > {{uiLabels.goBack}}  </button>
+    <button id="backButtons" type="button" onclick="window.location = '/#/start';"> {{uiLabels.goBack}} </button>
 
-  <div class="categoryList">
-    <button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button>
-    <button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button>
-     <button v-on:click="changeCategory(3)"> {{uiLabels.categorySauce}} </button>
-    <button v-on:click="changeCategory(4)"> {{uiLabels.categoryBread}}</button>
+    <div class="categoryList">
+      <button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button>
+      <button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button>
+      <button v-on:click="changeCategory(3)"> {{uiLabels.categorySauce}} </button>
+      <button v-on:click="changeCategory(4)"> {{uiLabels.categoryBread}}</button>
+    </div>
   </div>
-</div>
 
 
   <h1>{{ uiLabels.ingredients }}</h1>
 
   <div id="ingredientBox">
-    <Ingredient ref="ingredient"
-    v-for="item in ingredients"
-    v-show="item.category===currentCategory"
-    v-on:increment="addToOrder(item)"
-    v-on:decrease="reduceOrder(item)"
-    :count="item.counter"
-    :item="item"
-    :categoryNumber="currentCategory"
-    :lang="lang"
-    :key="item.ingredient_id">
+    <Ingredient ref="ingredient" v-for="item in ingredients" v-show="item.category===currentCategory" v-on:increment="addToOrder(item)" v-on:decrease="reduceOrder(item)" :count="item.counter" :item="item" :categoryNumber="currentCategory"
+      :lang="lang" :key="item.ingredient_id">
     </Ingredient>
   </div>
 
   <div id="placeOrderBox">
-  <!--  <h1>{{ uiLabels.order }}</h1> {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr -->
-  <div v-for="ingredCounter in countAllIngredients"
-                     v-if="ingredCounter.count>0"
-                     :key="countAllIngredients.indexOf(ingredCounter)">
-                    {{ingredCounter.name}}: {{ingredCounter.count}} {{uiLabels.parts}},
-                </div>
-                {{uiLabels.totalPrice}}: {{price}} kr
+    <div v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
+      {{ingredCounter.name}}: {{ingredCounter.count}} {{uiLabels.parts}},
+    </div>
+    {{uiLabels.totalPrice}}: {{price}} kr
     <button v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
   </div>
 
@@ -93,22 +82,22 @@ export default {
     }.bind(this));
   },
   computed: {
-    countAllIngredients: function () {
-                let ingredientTuples = []
-                for (let i = 0; i < this.chosenIngredients.length; i += 1) {
-                    ingredientTuples[i] = {};
-                    ingredientTuples[i].name = this.chosenIngredients[i]['ingredient_' + this.lang];
-                    ingredientTuples[i].count = this.countNumberOfIngredients(this.chosenIngredients[i].ingredient_id);
-                }
-                let allIngredients = Array.from(new Set(ingredientTuples.map(arrayName => arrayName.name))).map(name => {
-                        return {
-                            name: name,
-                            count: ingredientTuples.find(arrayName => arrayName.name === name).count
-                        };
-                    });
-                return allIngredients;
-            }
-        },
+    countAllIngredients: function() {
+      let ingredientTuples = []
+      for (let i = 0; i < this.chosenIngredients.length; i += 1) {
+        ingredientTuples[i] = {};
+        ingredientTuples[i].name = this.chosenIngredients[i]['ingredient_' + this.lang];
+        ingredientTuples[i].count = this.countNumberOfIngredients(this.chosenIngredients[i].ingredient_id);
+      }
+      let allIngredients = Array.from(new Set(ingredientTuples.map(arrayName => arrayName.name))).map(name => {
+        return {
+          name: name,
+          count: ingredientTuples.find(arrayName => arrayName.name === name).count
+        };
+      });
+      return allIngredients;
+    }
+  },
 
   methods: {
     showBurger: function(boolean) {
@@ -154,20 +143,21 @@ export default {
       this.chosenIngredients = [];
       this.allIIngredients.clear
     },
-    countNumberOfIngredients: function (id) {
-                let counter = 0;
-                for (var amountOfIngred in this.chosenIngredients) {
-                    //Now we have an array of ingredients in an order which is checked with the id that being sent from countAllIngredients in the call
-                    if (this.chosenIngredients[amountOfIngred].ingredient_id === id) {
-                        counter += 1;
-                    }
-                }
-                return counter;
-            }
+    countNumberOfIngredients: function(id) {
+      let counter = 0;
+      for (var amountOfIngred in this.chosenIngredients) {
+        //Now we have an array of ingredients in an order which is checked with the id that being sent from countAllIngredients in the call
+        if (this.chosenIngredients[amountOfIngred].ingredient_id === id) {
+          counter += 1;
+        }
+      }
+      return counter;
+    }
   }
 }
 </script>
  <style scoped>
+
 .startpage-container {
   text-align: center;
 }
@@ -181,6 +171,13 @@ export default {
   font-size: 1.5em;
   text-transform: uppercase;
   text-align: center;
+}
+#backButtons {
+  margin-left:97%;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+
 }
 
 #langButton {
@@ -199,6 +196,7 @@ export default {
   display: flex;
   flex-direction: row;
   border-color:white;
+  margin-top:-1.3em;
 }
 .categoryList button {
   color: #FFFFFF;
@@ -214,56 +212,37 @@ export default {
   background-color: green;
   color: white;
 }
-/* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates.
-*/
-
 #ingredientBox {
   display: flex;
-
   flex-flow:row wrap;
   background:transparent;
   border:transparent;
   font-size: 1.1em;
   width:10em;
-
-}
-
-/*
-
+} /*Tror app overridar fonten i detta av någon anledning.. Detta är alltså orderboxen */
 #placeOrderBox {
+  font-size: 24px;
+  font-style:black;
   text-align:center;
-  font-family: 'Mansalva',cursive;
   position: fixed;
   display:block;
   box-sizing:border-box;
-  background-color: rgb(255, 255, 255);
-  width: 340px;
-  min-width: 340px;
-  height: calc(100vh - 48px);
-  overflow-y: auto;
-  position: fixed;
-  z-index: 100;
-  top:250px;
-  right: 0px;
+  min-width: 100em;
+  height: 10em;
+  top:14em;
+  left:50em;
   border-top:1px solid rgb(196, 196, 196);
   border-left: 1px solid rgb(196, 196, 196);
-  font-family: 'Archivo Narrow',sans-serif;
-  font-size: 24px;
 }
-
 .example-panel {
-  position: fixed;
   background-image: url('~@/assets/exampleImage.jpg');
-  width: 200px;
-  left: 0;
-  top: 0;
+  width: 18em;
   z-index: 2;
 }
-
 .ingredient {
   border: 3px solid #ccd;
-  padding: 10px;
+  padding: 0.8em;
   color: white;
   background-image: url('~@/assets/exampleImage.jpg');
-}*/
+}
 </style>
