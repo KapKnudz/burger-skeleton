@@ -196,7 +196,6 @@ export default {
   text-align: center;
   margin-left: 1em;
   margin-right: 1em;
-  font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
 }
 
@@ -229,9 +228,8 @@ export default {
   padding: 40px;
   opacity:0.6;
   background: black;
-
-  border-top-right-radius: 5em;
-  border-top-left-radius: 5em;
+  border-top-right-radius: 4em;
+  border-top-left-radius:1em;
   border-top-style:groove;
   font-size: 1em;
 }
