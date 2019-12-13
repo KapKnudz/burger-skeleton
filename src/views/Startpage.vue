@@ -12,7 +12,7 @@
 
   <div id = "buttons">
       <!-- <router-link :to="{ path:'/'}">{{uiLabels.eatHere}}</router-link> -->
-      <button class="startButtons" type="button" onclick="window.location = '/#/';" > {{uiLabels.eatHere}}  </button>
+      <button class="startButtons" type="button" @click="$router.push({ path: '/?eat=home'})" > {{uiLabels.eatHere}}  </button>
       <button class="startButtons" type="button" @click="homeDelivery=true" > {{uiLabels.eatAway}} </button>
    </div>
    <div>
@@ -44,12 +44,12 @@
     data: function(){
       return {
         homeDelivery: false,
-
       }
     },
     methods: {
     },
     mounted(){
+
     }
   }
   </script>

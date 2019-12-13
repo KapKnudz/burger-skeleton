@@ -37,7 +37,7 @@ button {
 
 }
 .footer {
-  min-height: 75px;
+  min-height: 50px;
   text-align: center;
   background-color: #737373;
 }

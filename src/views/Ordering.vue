@@ -1,5 +1,9 @@
 <template>
 <div id="ordering">
+  <button id='langButton' v-on:click='switchLang()'>
+    <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
+    <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
+  </button>
   <div class="startpage-container">
     <div class='startpage'>
       <h1 id="startHead"> {{uiLabels.welcomeSite}} </h1>
@@ -11,34 +15,65 @@
       {{ingredCounter.name}}: {{ingredCounter.count}} {{uiLabels.parts}},
     </div>
     {{uiLabels.totalPrice}}: {{price}} kr
-    <button id="placeOrderButton" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
+    <button id="placeOrderButton" type="button" v-on:click="placeOrderClick"> {{ uiLabels.placeOrder }} </button>
   </div>
 
-  <div id="fixedCategoryTab">
+  <modal name="payment">
+    <form>
+      <p><label for="firstname">Full name</label><br>
+        <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last Name" size="30"></p>
+      <p><label for="email">Email address</label><br>
+        <input type="email" id="email" name="em" required="required" placeholder="Skurk.skurksson@skurson.com" size="30"></p>
+      <p><label for="Street">Street name</label><br>
+        <input type="text" id="streetname" name="sn" placeholder="Street name" size="30"></p>
+      <p><label for="House">House number</label><br>
+        <input type="number" id="House" name="Ho" placeholder="House number"></p>
+      <p><label for="paymentmethod">Payment method</label><br>
+        <select id="paymentmethod" name="pmmt">
+          <option>Credit card</option>
+          <option>Swish</option>
+          <option>Invoice (Klarna)</option>
+          <option>Cash on delivery</option>
+        </select></p>
+      <p id="gender">
+        <label for="gender">Please select your gender:</label><br>
+        <input type="radio" name="gender" value="Female"> Female<br>
+        <input type="radio" name="gender" value="Male"> Male<br>
+        <input type="radio" name="gender" value="Do not wish to provide"> Undisclosed<br>
+      </p>
+    </form>
+  </modal>
+  <modal name="confirmation">
+    Order confirmed
+  </modal>
 
-    <button id='langButton' v-on:click='switchLang()'>
-      <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
-      <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
-    </button>
 
-    <button id="backButtons" type="button" onclick="window.location = '/#/start';"> {{uiLabels.goBack}} </button>
 
-    <div class="categoryList">
-      <button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button>
-      <button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button>
-      <button v-on:click="changeCategory(3)"> {{uiLabels.categorySauce}} </button>
-      <button v-on:click="changeCategory(4)"> {{uiLabels.categoryBread}}</button>
+  <button id="backButtons" type="button" onclick="window.location = '/#/start';"> {{uiLabels.goBack}} </button>
+
+  <div class="all-ingredients">
+
+    <div id="fixedCategoryTab">
+
+      <div class="categoryList">
+        <button v-on:click="changeCategory(1)"> {{uiLabels.categoryMeat}} </button>
+        <button v-on:click="changeCategory(2)"> {{uiLabels.categorySides}}</button>
+        <button v-on:click="changeCategory(3)"> {{uiLabels.categorySauce}} </button>
+        <button v-on:click="changeCategory(4)"> {{uiLabels.categoryBread}}</button>
+      </div>
     </div>
-  </div>
 
 
-  <h1>{{ uiLabels.ingredients }}</h1>
-  <div class="ingredient-container">
-    <div class="ingredientBox">
-      <Ingredient ref="ingredient" v-for="item in ingredients" v-show="item.category===currentCategory" v-on:increment="addToOrder(item)" v-on:decrease="reduceOrder(item)" :count="item.counter" :item="item" :categoryNumber="currentCategory"
-        :lang="lang" :key="item.ingredient_id">
-      </Ingredient>
+    <h1>{{ uiLabels.ingredients }}</h1>
+    <div class="ingredient-container">
+      <div v-for="item in ingredients" class="ingredient-box" v-if="item.category===currentCategory">
+        <Ingredient ref="ingredient" v-on:increment="addToOrder(item)" v-on:decrease="reduceOrder(item)" :count="item.counter" :item="item" :categoryNumber="currentCategory"
+          :lang="lang" :key="item.ingredient_id">
+        </Ingredient>
+      </div>
+
     </div>
+
   </div>
 
 
@@ -83,6 +118,10 @@ export default {
     }.bind(this));
   },
   computed: {
+    eatHome() {
+      console.log(this.$route.query.eat === 'home')
+      return this.$route.query.eat === 'home'
+    },
     countAllIngredients: function() {
       let ingredientTuples = []
       for (let i = 0; i < this.chosenIngredients.length; i += 1) {
@@ -101,6 +140,12 @@ export default {
   },
 
   methods: {
+    show (name) {
+      this.$modal.show(name);
+    },
+    hide (name) {
+      this.$modal.hide(name);
+    },
     showBurger: function(boolean) {
       this.hamburgerButtons = boolean;
     },
@@ -121,6 +166,19 @@ export default {
     reduceOrder: function(item) {
       this.chosenIngredients.splice(this.chosenIngredients.indexOf(item), 1);
       this.price += -item.selling_price;
+    },
+
+    placeOrderClick() {
+      if (this.eatHome) {
+        this.show('payment')
+      }
+      else {
+        this.show('confirmation')
+      }
+    },
+    confirmOrder() {
+      this.hide('payment')
+      this.show('confirmation')
     },
 
     placeOrder: function() {
@@ -217,28 +275,41 @@ export default {
 #langPic {
     height: 100%;
   }
+.all-ingredients {
+  margin-right: 400px;
+  margin-bottom: 100px;
+}
 .categoryList {
   display: flex;
   flex-direction: row;
   border-color:white;
 }
 .categoryList button {
+  flex: 1 0 0;
   color: #FFFFFF;
-  width: 150px;
   padding: 40px;
   opacity:0.6;
   background: black;
   border-top-right-radius: 4em;
   border-top-left-radius:1em;
-  border-top-style:groove;
   font-size: 1em;
+  text-transform: uppercase;
+  text-align: center;
 }
 .categoryList button:hover {
   box-shadow: 0 20px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   background-color: green;
   color: white;
 }
-.ingredient-container > .ingredientBox {
+.ingredient-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ingredient-box {
+  width: 25%;
+  display: flex;
+}
+/*.ingredient-container > .ingredientBox {
 	display: flex;
 	flex-wrap: wrap;
   text-align: center;
@@ -257,7 +328,7 @@ export default {
   margin-right: 30%;
   font-size: 0.8em;
   text-transform: uppercase;
-}
+}*/
  /*Tror app overridar fonten i detta av någon anledning.. Detta är alltså orderboxen */
 .placeOrderBox {
   font-size: 24px;
@@ -282,6 +353,7 @@ export default {
   padding: 0.8em;
   color: white;
   background-image: url('~@/assets/exampleImage.jpg');
+  flex-grow: 1;
 }
 
 </style>
