@@ -6,6 +6,13 @@
     </div>
   </div>
 
+  <div id="placeOrderBox">
+    <div v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
+      {{ingredCounter.name}}: {{ingredCounter.count}} {{uiLabels.parts}},
+    </div>
+    {{uiLabels.totalPrice}}: {{price}} kr
+    <button id="placeOrderButton" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
+  </div>
 
   <div id="fixedCategoryTab">
 
@@ -33,16 +40,6 @@
     </Ingredient>
   </div>
 
-  <div id="placeOrderBox">
-    <div v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
-      {{ingredCounter.name}}: {{ingredCounter.count}} {{uiLabels.parts}},
-    </div>
-    {{uiLabels.totalPrice}}: {{price}} kr
-    <button v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
-  </div>
-
-
-
 
 </div>
 </template>
@@ -64,7 +61,8 @@ export default {
     Ingredient,
     OrderItem
   },
-  mixins: [sharedVueStuff], // include stuff that is used in both
+  mixins: [sharedVueStuff],
+  // include stuff that is used in both
   // the ordering system and the kitchen
   data: function() { //Not that data is a function!
     return {
@@ -157,7 +155,6 @@ export default {
 }
 </script>
  <style scoped>
-
 .startpage-container {
   text-align: center;
 }
@@ -172,6 +169,34 @@ export default {
   text-transform: uppercase;
   text-align: center;
 }
+#placeOrderBox {
+  position: fixed;
+  font-size: 24px;
+  color: white;
+  text-align:center;
+  display:block;
+  box-sizing:border-box;
+  height: 10em;
+  margin-top:5em;
+  margin-left:50em;
+  border-top:1px solid rgb(196, 196, 196);
+  border-left: 1px solid rgb(196, 196, 196);
+}
+
+#placeOrderButton{
+  background-color: #grey;
+  border-radius: 5px;
+  border: 5px solid grey;
+  color: black;
+  font-size: 16pt;
+  text-transform: uppercase;
+  text-align: center;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-family: 'Montserrat', sans-serif;
+  flex: 1 0 0;
+}
+
 #backButtons {
   margin-left:97%;
   text-align: center;
@@ -179,7 +204,6 @@ export default {
   justify-content: center;
 
 }
-
 #langButton {
   position: absolute;
   top: 30px;
@@ -215,24 +239,8 @@ export default {
 #ingredientBox {
   display: flex;
   flex-flow:row wrap;
-  background:transparent;
-  border:transparent;
   font-size: 1.1em;
   width:10em;
-} /*Tror app overridar fonten i detta av någon anledning.. Detta är alltså orderboxen */
-#placeOrderBox {
-  font-size: 24px;
-  font-style:black;
-  text-align:center;
-  position: fixed;
-  display:block;
-  box-sizing:border-box;
-  min-width: 100em;
-  height: 10em;
-  top:14em;
-  left:50em;
-  border-top:1px solid rgb(196, 196, 196);
-  border-left: 1px solid rgb(196, 196, 196);
 }
 .example-panel {
   background-image: url('~@/assets/exampleImage.jpg');
@@ -245,4 +253,5 @@ export default {
   color: white;
   background-image: url('~@/assets/exampleImage.jpg');
 }
+
 </style>
