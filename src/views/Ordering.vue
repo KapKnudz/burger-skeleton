@@ -26,20 +26,20 @@
 
 
   <h1>{{ uiLabels.ingredients }}</h1>
-
-  <div id="ingredientBox">
-    <Ingredient ref="ingredient" v-for="item in ingredients" v-show="item.category===currentCategory" v-on:increment="addToOrder(item)" v-on:decrease="reduceOrder(item)" :count="item.counter" :item="item" :categoryNumber="currentCategory"
-      :lang="lang" :key="item.ingredient_id">
-    </Ingredient>
-  </div>
-
-  <div id="placeOrderBox">
-    <div v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
-      {{ingredCounter.name}}: {{ingredCounter.count}} {{uiLabels.parts}},
+  <div class="ingredient-container">
+    <div class="ingredientBox">
+      <Ingredient ref="ingredient" v-for="item in ingredients" v-show="item.category===currentCategory" v-on:increment="addToOrder(item)" v-on:decrease="reduceOrder(item)" :count="item.counter" :item="item" :categoryNumber="currentCategory"
+        :lang="lang" :key="item.ingredient_id">
+      </Ingredient>
     </div>
-    {{uiLabels.totalPrice}}: {{price}} kr
-    <button v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
   </div>
+    <div class="placeOrderBox">
+      <div v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
+        {{ingredCounter.name}}: {{ingredCounter.count}} {{uiLabels.parts}},
+      </div>
+      {{uiLabels.totalPrice}}: {{price}} kr
+      <button v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
+    </div>
 
 
 
@@ -173,11 +173,10 @@ export default {
   text-align: center;
 }
 #backButtons {
-  margin-left:97%;
+  margin-left:95%;
   text-align: center;
   display: inline-flex;
-  justify-content: center;
-
+  justify-content: left;
 }
 
 #langButton {
@@ -196,7 +195,6 @@ export default {
   display: flex;
   flex-direction: row;
   border-color:white;
-  margin-top:-1.3em;
 }
 .categoryList button {
   color: #FFFFFF;
@@ -212,17 +210,29 @@ export default {
   background-color: green;
   color: white;
 }
-#ingredientBox {
-  display: flex;
-  flex-flow:row wrap;
-  background:transparent;
-  border:transparent;
-  font-size: 1.1em;
-  width:10em;
-} /*Tror app overridar fonten i detta av någon anledning.. Detta är alltså orderboxen */
-#placeOrderBox {
+.ingredient-container > .ingredientBox {
+	display: flex;
+	flex-wrap: wrap;
+  text-align: center;
+}
+.ingredient-container > .ingredientBox > .ingredientBox {
+	flex-grow: 1;
+	width: 33%;
+}
+.ingredient-container > .ingredientBox> .ingredientBox :nth-child(even) {
+}
+.ingredient-container > .ingredientBox > .ingredientBox:nth-child(odd) {
+}
+
+.ingredientBox {
+  justify-content: left;
+  margin-right: 30%;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+ /*Tror app overridar fonten i detta av någon anledning.. Detta är alltså orderboxen */
+.placeOrderBox {
   font-size: 24px;
-  font-style:black;
   text-align:center;
   position: fixed;
   display:block;
