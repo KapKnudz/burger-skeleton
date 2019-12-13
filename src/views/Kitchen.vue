@@ -14,12 +14,10 @@
     </div>
     <div class = "row" align = "center">
     <div class = "column left">
+      <h1>{{ uiLabels.ordersInQueue }}</h1>
       <div align = "left">
-
-        <h1>{{ uiLabels.ordersInQueue }}</h1>
-
         <OrderItemToPrepare
-                id = "order_in_que"
+                id = "orders_in_queue"
                 v-for="(order, key) in orders"
                 v-if="order.status === 'not-started'"
                 v-on:next="markStarted(key)"
@@ -32,14 +30,14 @@
       </div>
     </div>
 
-    <div class = "column left">
+    <div class = "column right">
+      <h1>{{ uiLabels.startedOrders }}</h1>
       <div align = "left">
-        <h1>{{ uiLabels.startedOrders }}</h1>
         <OrderItemToPrepare
                 id = "started_orders"
                 v-for="(order, key) in orders"
                 v-if="order.status === 'started'"
-                v-on:cancelOrder="markBack(key)"
+                v-on:back="markBack(key)"
                 v-on:next="markDone(key)"
                 :order-id="key"
                 :order="order"
@@ -104,6 +102,7 @@
   .row {
     display: flex;
     height: 90%;
+    color: black;
   }
   .column {
     border: solid #5a1800;

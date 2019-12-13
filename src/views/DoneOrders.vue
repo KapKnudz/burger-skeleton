@@ -16,16 +16,16 @@
       <div class = "column left">
     <h1>{{ uiLabels.ordersFinished }}</h1>
     <div>
-      <OrderItem
+      <OrderItemToPrepare
               v-for="(order, key) in orders"
               v-if="order.status === 'done'"
               :order-id="key"
-              v-on:cancelOrder="markStarted(key)"
+              v-on:back="markBack(key)"
               :order="order"
               :lang="lang"
               :ui-labels="uiLabels"
               :key="key">
-      </OrderItem>
+      </OrderItemToPrepare>
     </div>
   </div>
   </div>
@@ -53,8 +53,8 @@
       }
     },
     methods: {
-      markDone: function (orderid) {
-        this.$store.state.socket.emit("orderDone", orderid);
+      markBack: function (orderid){
+        this.$store.state.socket.emit("orderStarted", orderid);
       }
     }
   }
@@ -71,6 +71,7 @@
   }
 
   .row {
+    color: black;
     display: flex;
     height: 90%;
   }
