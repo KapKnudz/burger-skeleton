@@ -240,14 +240,17 @@ export default {
   height: 10em;
   margin-top:5em;
   margin-left:50em;
-  border-top:1px solid rgb(196, 196, 196);
-  border-left: 1px solid rgb(196, 196, 196);
+  border-top:4px solid rgb(196, 196, 196);
+  border-left: 4px solid rgb(196, 196, 196);
+  border-bottom: 6px solid rgb(196, 196, 196);
+  border-color:white;
 }
 
 #placeOrderButton{
-  background-color: #grey;
+  background-image:url(https://img.freepik.com/free-photo/blank-concrete-white-wall-texture-background_1017-15560.jpg?size=626&ext=jpg);
+  border-width:0.15em;
   border-radius: 5px;
-  border: 5px solid grey;
+  border: 5px solid white;
   color: black;
   font-size: 16pt;
   text-transform: uppercase;
@@ -255,6 +258,10 @@ export default {
   margin-left: 1em;
   margin-right: 1em;
   flex: 1 0 0;
+}
+#placeOrderButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 30px 0 rgba(0,0,0,0.19);
+    color:white;
 }
 
 #backButtons {
@@ -282,24 +289,22 @@ export default {
 .categoryList {
   display: flex;
   flex-direction: row;
-  border-color:white;
+
 }
 .categoryList button {
-  flex: 1 0 0;
-  color: #FFFFFF;
+  background-image:url(https://img.freepik.com/free-photo/white-marble-texture-background-abstract-marble-texture-natural-patterns-design_41389-323.jpg?size=626&ext=jpg);
+  border-width:0.15em;
+  width: 200px;
   padding: 40px;
-  opacity:0.6;
-  background: black;
   border-top-right-radius: 4em;
   border-top-left-radius:1em;
-  font-size: 1em;
-  text-transform: uppercase;
-  text-align: center;
+  border-top-style:groove;
+  font-size: 1.3em;
 }
 .categoryList button:hover {
-  box-shadow: 0 20px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  background-color: green;
-  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 30px 0 rgba(0,0,0,0.19);
+  color:white;
+  text-shadow: 3px 3px rgba(0,0,0,0.24);
 }
 .ingredient-container {
   display: flex;
