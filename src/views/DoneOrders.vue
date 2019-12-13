@@ -1,7 +1,17 @@
 <template>
   <div id="orders">
-    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-    <div class = "row" align = "left">
+
+
+    <div id="fixedCategoryTab">
+      <button id='langButton' v-on:click='switchLang()'>
+        <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
+        <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
+      </button>
+
+      <button id="backButtons" type="button" onclick="window.location = '/#/kitchen';"> {{uiLabels.goBack}} </button>
+
+
+    </div>    <div class = "row" align = "left">
 
       <div class = "column left">
     <h1>{{ uiLabels.ordersFinished }}</h1>
@@ -76,5 +86,25 @@
     width: 100%;
     float: left;
     overflow: scroll;
+  }
+
+  #backButtons {
+    margin-left:95%;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+
+  }
+  #langPic {
+    height: 100%;
+  }
+  #langButton {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: transparent;
   }
 </style>

@@ -1,15 +1,27 @@
 <template>
   <div id="orders">
 
-    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+    <div id="fixedCategoryTab">
+    <button id='langButton' v-on:click='switchLang()'>
+      <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
+      <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
+    </button>
+
+    <button id="backButtons" type="button" onclick="window.location = '/#/';"> {{uiLabels.goBack}} </button>
+
+      <button id="stockButtons" type="button" onclick="window.location = '/#/stock';"> {{uiLabels.stockCurrent}} </button>
+
+    </div>
     <div class = "row" align = "center">
     <div class = "column left">
       <div align = "left">
 
+        <h1>{{ uiLabels.ordersInQueue }}</h1>
+
         <OrderItemToPrepare
                 id = "order_in_que"
                 v-for="(order, key) in orders"
-                v-if="order.status !== 'done'"
+                v-if="order.status === 'not-started'"
                 v-on:next="markStarted(key)"
                 :order-id="key"
                 :order="order"
@@ -39,6 +51,7 @@
     </div>
 </div>
 
+
   </div>
 </template>
 <script>
@@ -67,7 +80,7 @@
         this.$store.state.socket.emit("orderDone", orderid);
       },
       markStarted: function (orderid) {
-        this.$store.state.socket.emit("startedOrder", orderid);
+        this.$store.state.socket.emit("orderStarted", orderid);
       },
       markBack: function (orderid){
         this.$store.state.socket.emit("orderNotStarted", orderid);
@@ -105,4 +118,33 @@
     float: left;
     overflow: scroll;
   }
+
+  #backButtons {
+    margin-left:95%;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+
+  }
+
+  #stockButtons {
+    margin-left:10%;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  #langButton {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: transparent;
+  }
+  #langPic {
+    height: 100%;
+  }
+
 </style>

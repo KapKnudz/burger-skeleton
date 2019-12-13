@@ -6,6 +6,13 @@
     </div>
   </div>
 
+  <div id="placeOrderBox">
+    <div v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
+      {{ingredCounter.name}}: {{ingredCounter.count}} {{uiLabels.parts}},
+    </div>
+    {{uiLabels.totalPrice}}: {{price}} kr
+    <button id="placeOrderButton" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
+  </div>
 
   <div id="fixedCategoryTab">
 
@@ -64,7 +71,8 @@ export default {
     Ingredient,
     OrderItem
   },
-  mixins: [sharedVueStuff], // include stuff that is used in both
+  mixins: [sharedVueStuff],
+  // include stuff that is used in both
   // the ordering system and the kitchen
   data: function() { //Not that data is a function!
     return {
@@ -157,7 +165,6 @@ export default {
 }
 </script>
  <style scoped>
-
 .startpage-container {
   text-align: center;
 }
@@ -172,13 +179,40 @@ export default {
   text-transform: uppercase;
   text-align: center;
 }
+#placeOrderBox {
+  position: fixed;
+  font-size: 24px;
+  color: white;
+  text-align:center;
+  display:block;
+  box-sizing:border-box;
+  height: 10em;
+  margin-top:5em;
+  margin-left:50em;
+  border-top:1px solid rgb(196, 196, 196);
+  border-left: 1px solid rgb(196, 196, 196);
+}
+
+#placeOrderButton{
+  background-color: #grey;
+  border-radius: 5px;
+  border: 5px solid grey;
+  color: black;
+  font-size: 16pt;
+  text-transform: uppercase;
+  text-align: center;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-family: 'Montserrat', sans-serif;
+  flex: 1 0 0;
+}
+
 #backButtons {
   margin-left:95%;
   text-align: center;
   display: inline-flex;
   justify-content: left;
 }
-
 #langButton {
   position: absolute;
   top: 30px;
@@ -189,8 +223,8 @@ export default {
   border: transparent;
 }
 #langPic {
-  height: 100%;
-}
+    height: 100%;
+  }
 .categoryList {
   display: flex;
   flex-direction: row;
@@ -255,4 +289,5 @@ export default {
   color: white;
   background-image: url('~@/assets/exampleImage.jpg');
 }
+
 </style>
