@@ -228,7 +228,10 @@ export default {
   padding: 40px;
   opacity:0.6;
   background: black;
-  border-radius:5em;
+
+  border-top-right-radius: 5em;
+  border-top-left-radius: 5em;
+  border-top-style:groove;
   font-size: 1em;
 }
 .categoryList button:hover {
