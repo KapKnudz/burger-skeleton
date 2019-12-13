@@ -30,5 +30,6 @@
   "welcomeSite": "Välkomna till skurknästet",
   "totalPrice": "Hela priset",
   "parts": "stycken",
-  "goBack": "Tillbaka"
+  "goBack": "Tillbaka",
+  "stockCurrent": "Lagersaldo"
 }
