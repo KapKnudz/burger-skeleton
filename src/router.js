@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
 import DoneOrders from './views/DoneOrders.vue'
+import Startpage from './views/Startpage.vue'
 
 Vue.use(Router)
 
@@ -14,6 +15,14 @@ let router = new Router({
       },
       name: 'ordering',
       component: Ordering
+    },
+    {
+      path:'/start',
+      meta: {
+        title: 'Skrk'
+      },
+      name: 'startpage',
+      component: Startpage
     },
 
     {
@@ -28,6 +37,8 @@ let router = new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "read" */ './views/Kitchen.vue')
     },
+
+
     {
       path:'/DoneOrders',
       meta: {
