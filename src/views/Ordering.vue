@@ -33,12 +33,15 @@
 
 
   <h1>{{ uiLabels.ingredients }}</h1>
-
-  <div id="ingredientBox">
-    <Ingredient ref="ingredient" v-for="item in ingredients" v-show="item.category===currentCategory" v-on:increment="addToOrder(item)" v-on:decrease="reduceOrder(item)" :count="item.counter" :item="item" :categoryNumber="currentCategory"
-      :lang="lang" :key="item.ingredient_id">
-    </Ingredient>
+  <div class="ingredient-container">
+    <div class="ingredientBox">
+      <Ingredient ref="ingredient" v-for="item in ingredients" v-show="item.category===currentCategory" v-on:increment="addToOrder(item)" v-on:decrease="reduceOrder(item)" :count="item.counter" :item="item" :categoryNumber="currentCategory"
+        :lang="lang" :key="item.ingredient_id">
+      </Ingredient>
+    </div>
   </div>
+
+
 
 
 </div>
@@ -198,11 +201,10 @@ export default {
 }
 
 #backButtons {
-  margin-left:97%;
+  margin-left:95%;
   text-align: center;
   display: inline-flex;
-  justify-content: center;
-
+  justify-content: left;
 }
 #langButton {
   position: absolute;
@@ -220,7 +222,6 @@ export default {
   display: flex;
   flex-direction: row;
   border-color:white;
-  margin-top:-1.3em;
 }
 .categoryList button {
   color: #FFFFFF;
@@ -239,11 +240,39 @@ export default {
   background-color: green;
   color: white;
 }
-#ingredientBox {
-  display: flex;
-  flex-flow:row wrap;
-  font-size: 1.1em;
-  width:10em;
+.ingredient-container > .ingredientBox {
+	display: flex;
+	flex-wrap: wrap;
+  text-align: center;
+}
+.ingredient-container > .ingredientBox > .ingredientBox {
+	flex-grow: 1;
+	width: 33%;
+}
+.ingredient-container > .ingredientBox> .ingredientBox :nth-child(even) {
+}
+.ingredient-container > .ingredientBox > .ingredientBox:nth-child(odd) {
+}
+
+.ingredientBox {
+  justify-content: left;
+  margin-right: 30%;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+ /*Tror app overridar fonten i detta av någon anledning.. Detta är alltså orderboxen */
+.placeOrderBox {
+  font-size: 24px;
+  text-align:center;
+  position: fixed;
+  display:block;
+  box-sizing:border-box;
+  min-width: 100em;
+  height: 10em;
+  top:14em;
+  left:50em;
+  border-top:1px solid rgb(196, 196, 196);
+  border-left: 1px solid rgb(196, 196, 196);
 }
 .example-panel {
   background-image: url('~@/assets/exampleImage.jpg');
