@@ -1,7 +1,6 @@
 <template>
   <div id="orders">
 
-
     <div id="fixedCategoryTab">
     <button id='langButton' v-on:click='switchLang()'>
       <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
@@ -10,6 +9,7 @@
 
     <button id="backButtons" type="button" onclick="window.location = '/#/';"> {{uiLabels.goBack}} </button>
 
+      <button id="stockButtons" type="button" onclick="window.location = '/#/stock';"> {{uiLabels.stockCurrent}} </button>
 
     </div>
     <div class = "row" align = "center">
@@ -126,6 +126,14 @@
     justify-content: center;
 
   }
+
+  #stockButtons {
+    margin-left:10%;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+  }
+
   #langButton {
     position: absolute;
     top: 10px;

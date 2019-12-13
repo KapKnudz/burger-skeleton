@@ -30,5 +30,6 @@
   "welcomeSite": "Welcome to the villain-nest",
   "totalPrice": "Total price",
   "parts": "pieces",
-  "goBack" : "Back"
+  "goBack" : "Back",
+  "stockCurrent": "Current Stock"
 }
