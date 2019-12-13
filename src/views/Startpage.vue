@@ -21,8 +21,6 @@
        <button class="orderHome" type="button" @click="$router.push('/')" > {{uiLabels.eatHere}}  </button>
      </div>
    </div>
-
-
   </div>
 
 </template>
