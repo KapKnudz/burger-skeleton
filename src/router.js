@@ -8,16 +8,9 @@ Vue.use(Router)
 
 let router = new Router({
   routes: [
+
     {
-      path: '/',
-      meta: {
-        title: 'Kraft Burgers',
-      },
-      name: 'ordering',
-      component: Ordering
-    },
-    {
-    path: '/start',
+    path: '/',
     meta: {
       title: 'Welcome to Skrk',
     },
@@ -26,6 +19,14 @@ let router = new Router({
     // this generates a separate chunk (read.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: Startpage
+    },
+    {
+      path: '/ordering',
+      meta: {
+        title: 'Kraft Burgers',
+      },
+      name: 'ordering',
+      component: Ordering
     },
     {
       path: '/kitchen',

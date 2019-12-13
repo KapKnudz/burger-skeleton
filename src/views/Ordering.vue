@@ -41,15 +41,17 @@
         <input type="radio" name="gender" value="Male"> Male<br>
         <input type="radio" name="gender" value="Do not wish to provide"> Undisclosed<br>
       </p>
+      <button id="placeOrderButton" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
     </form>
   </modal>
   <modal name="confirmation">
+    <button id="placeOrderButtontwo" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
     Order confirmed
   </modal>
 
 
 
-  <button id="backButtons" type="button" onclick="window.location = '/#/start';"> {{uiLabels.goBack}} </button>
+  <button id="backButtons" type="button" onclick="window.location = '/';"> {{uiLabels.goBack}} </button>
 
   <div class="all-ingredients">
 
@@ -71,12 +73,9 @@
           :lang="lang" :key="item.ingredient_id">
         </Ingredient>
       </div>
-
     </div>
 
   </div>
-
-
 
 
 </div>
@@ -146,6 +145,7 @@ export default {
     hide (name) {
       this.$modal.hide(name);
     },
+
     showBurger: function(boolean) {
       this.hamburgerButtons = boolean;
     },
@@ -220,7 +220,7 @@ export default {
   text-align: center;
 }
 .startpage {
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('~@/assets/background.jpg');
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('~@/assets/background.jpg');
   min-height: 300px;
   display: flex;
   flex-direction: column;
@@ -259,6 +259,20 @@ export default {
   margin-right: 1em;
   flex: 1 0 0;
 }
+#placeOrderButtontwo{
+  background-image:url(https://img.freepik.com/free-photo/blank-concrete-white-wall-texture-background_1017-15560.jpg?size=626&ext=jpg);
+  border-width:0.15em;
+  border-radius: 5px;
+  border: 5px solid white;
+  color: black;
+  font-size: 16pt;
+  text-transform: uppercase;
+  text-align: center;
+  margin-left: 1em;
+  margin-right: 1em;
+  flex: 1 0 0;
+}
+
 #placeOrderButton:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 30px 0 rgba(0,0,0,0.19);
     color:white;
@@ -335,7 +349,8 @@ export default {
   text-transform: uppercase;
 }*/
  /*Tror app overridar fonten i detta av någon anledning.. Detta är alltså orderboxen */
-.placeOrderBox {
+
+/*.placeOrderBox {
   font-size: 24px;
   text-align:center;
   position: fixed;
@@ -347,7 +362,8 @@ export default {
   left:50em;
   border-top:1px solid rgb(196, 196, 196);
   border-left: 1px solid rgb(196, 196, 196);
-}
+}*/
+
 .example-panel {
   background-image: url('~@/assets/exampleImage.jpg');
   width: 18em;
