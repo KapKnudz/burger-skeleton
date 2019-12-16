@@ -4,8 +4,8 @@
 
     <div id="fixedCategoryTab">
       <button id='langButton' v-on:click='switchLang()'>
-        <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
-        <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
+        <img id='langPic' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
+        <img id='langPic' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
       </button>
 
       <button id="backButtons" type="button" onclick="window.location = '/#/kitchen';"> {{uiLabels.goBack}} </button>

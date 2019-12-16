@@ -8,9 +8,9 @@
     <button v-if="moreThanZeroOrders===false" v-on:click="decreaseCounter">
       <img v-on:click: src="@/assets/minus_sign.png" width=25px;>
     </button>
-
-    {{ this.counter }}
-
+<div class="counterClass">
+ {{ this.counter }}
+</div>
     <button v-on:click="incrementCounter">
       <img v-on:click: src="@/assets/plus_sign.jpg" width=25px;>
     </button>
@@ -59,10 +59,13 @@ export default {
 </script>
 <style scoped>
 .gridBackground {
-  margin-right: 0px;
-  color: white;
-  background-image: url('~@/assets/exampleImage.jpg');
-
+  display:flex;
+  justify-content: space-evenly;
+  font-size: 1.1em;
+  padding:1em;
+  color: black;
+}
+.counterClass {
 
 }
 

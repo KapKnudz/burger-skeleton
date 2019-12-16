@@ -1,8 +1,8 @@
 <template>
 <div id="ordering">
   <button id='langButton' v-on:click='switchLang()'>
-    <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
-    <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
+    <img id='langPic' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
+    <img id='langPic' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
   </button>
   <div class="startpage-container">
     <div class='startpage'>
@@ -107,7 +107,6 @@ export default {
       price: 0,
       orderNumber: "",
       currentCategory: 1,
-      hamburgerButtons: false,
       displayOrder: false
     }
   },
@@ -118,7 +117,6 @@ export default {
   },
   computed: {
     eatHome() {
-      console.log(this.$route.query.eat === 'home')
       return this.$route.query.eat === 'home'
     },
     countAllIngredients: function() {
@@ -144,10 +142,6 @@ export default {
     },
     hide (name) {
       this.$modal.hide(name);
-    },
-
-    showBurger: function(boolean) {
-      this.hamburgerButtons = boolean;
     },
 
     showOrder: function(boolean) {
@@ -247,29 +241,29 @@ export default {
 }
 
 #placeOrderButton{
-  background-image:url(https://img.freepik.com/free-photo/blank-concrete-white-wall-texture-background_1017-15560.jpg?size=626&ext=jpg);
-  border-width:0.15em;
+  background-color: #grey;
   border-radius: 5px;
-  border: 5px solid white;
+  border: 5px solid grey;
   color: black;
   font-size: 16pt;
   text-transform: uppercase;
   text-align: center;
   margin-left: 1em;
   margin-right: 1em;
+  font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
 }
 #placeOrderButtontwo{
-  background-image:url(https://img.freepik.com/free-photo/blank-concrete-white-wall-texture-background_1017-15560.jpg?size=626&ext=jpg);
-  border-width:0.15em;
+  background-color: #grey;
   border-radius: 5px;
-  border: 5px solid white;
+  border: 5px solid grey;
   color: black;
   font-size: 16pt;
   text-transform: uppercase;
   text-align: center;
   margin-left: 1em;
   margin-right: 1em;
+  font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
 }
 
@@ -279,10 +273,19 @@ export default {
 }
 
 #backButtons {
-  margin-left:95%;
+  margin-left:90%;
   text-align: center;
   display: inline-flex;
   justify-content: left;
+  background-color: #grey;
+  border-radius: 5px;
+  border: 5px solid grey;
+  color: black;
+  font-size: 16pt;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  flex: 1 0 0;
 }
 #langButton {
   position: absolute;
@@ -306,8 +309,14 @@ export default {
 
 }
 .categoryList button {
-  background-image:url(https://img.freepik.com/free-photo/white-marble-texture-background-abstract-marble-texture-natural-patterns-design_41389-323.jpg?size=626&ext=jpg);
-  border-width:0.15em;
+
+  background-color: #grey;
+  border-radius: 5px;
+  border: 5px solid grey;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  flex: 1 0 0;
   width: 200px;
   padding: 40px;
   border-top-right-radius: 4em;
@@ -325,6 +334,7 @@ export default {
   flex-wrap: wrap;
 }
 .ingredient-box {
+  padding:1em;
   width: 25%;
   display: flex;
 }
@@ -341,40 +351,16 @@ export default {
 }
 .ingredient-container > .ingredientBox > .ingredientBox:nth-child(odd) {
 }
+*/
 
-.ingredientBox {
-  justify-content: left;
-  margin-right: 30%;
-  font-size: 0.8em;
-  text-transform: uppercase;
-}*/
- /*Tror app overridar fonten i detta av någon anledning.. Detta är alltså orderboxen */
-
-/*.placeOrderBox {
-  font-size: 24px;
-  text-align:center;
-  position: fixed;
-  display:block;
-  box-sizing:border-box;
-  min-width: 100em;
-  height: 10em;
-  top:14em;
-  left:50em;
-  border-top:1px solid rgb(196, 196, 196);
-  border-left: 1px solid rgb(196, 196, 196);
-}*/
-
-.example-panel {
-  background-image: url('~@/assets/exampleImage.jpg');
-  width: 18em;
-  z-index: 2;
-}
 .ingredient {
-  border: 3px solid #ccd;
+  border: 5px solid grey;
   padding: 0.8em;
-  color: white;
-  background-image: url('~@/assets/exampleImage.jpg');
+  border-color:#grey;
+  border-radius:2em;
+  color: black;
   flex-grow: 1;
+  background-color: white;
 }
 
 </style>
