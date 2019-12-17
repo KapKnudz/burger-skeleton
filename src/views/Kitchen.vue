@@ -7,9 +7,8 @@
       <img id='langPic' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
     </button>
 
-    <button id="backButtons" type="button" onclick="window.location = '/#/';"> {{uiLabels.goBack}} </button>
-
       <button id="stockButtons" type="button" onclick="window.location = '/#/stock';"> {{uiLabels.stockCurrent}} </button>
+    <button id="backButtons" type="button" onclick="window.location = '/#/';"> {{uiLabels.goBack}} </button>
 
     </div>
     <div class = "row" align = "center">
@@ -118,19 +117,32 @@
     overflow: scroll;
   }
 
-  #backButtons {
-    margin-left:95%;
+  #stockButtons {
+    background-color: #grey;
+    border-radius: 5px;
+    border: 5px solid grey;
+    color: black;
+    font-size: 16pt;
+    text-transform: uppercase;
     text-align: center;
-    display: inline-flex;
-    justify-content: center;
-
+    margin-left: 10%;
+    margin-right: 1em;
+    font-family: 'Montserrat', sans-serif;
+    flex: 1 0 0;
   }
 
-  #stockButtons {
-    margin-left:10%;
+  #backButtons {
+    background-color: #grey;
+    border-radius: 5px;
+    border: 5px solid grey;
+    color: black;
+    font-size: 16pt;
+    text-transform: uppercase;
     text-align: center;
-    display: inline-flex;
-    justify-content: center;
+    margin-left: 10%;
+    margin-right: 1em;
+    font-family: 'Montserrat', sans-serif;
+    flex: 1 0 0;
   }
 
   #langButton {
