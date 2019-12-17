@@ -8,7 +8,7 @@
                 <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
             </button>
 
-            <button id="backButtons" type="button" onclick="window.location = '/#/kitchen';"> {{uiLabels.goBack}} </button>
+            <button id="backButton" type="button" onclick="window.location = '/#/kitchen';"> {{uiLabels.goBack}} </button>
 
 
         </div>
@@ -132,12 +132,19 @@
         overflow: scroll;
     }
 
-    #backButtons {
-        margin-left:95%;
+    #backButton {
+        margin-left:90%;
         text-align: center;
         display: inline-flex;
         justify-content: center;
-
+        background-color: #grey;
+        border-radius: 5px;
+        border: 5px solid grey;
+        color: black;
+        font-size: 16pt;
+        text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif;
+        flex: 1 0 0;
     }
     #langPic {
         height: 100%;
