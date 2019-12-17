@@ -30,6 +30,9 @@
   "welcomeSite": "Välkomna till skurknästet",
   "totalPrice": "Hela priset",
   "parts": "stycken",
-  "goBack": "Tillbaka",
-  "stockCurrent": "Lagersaldo"
+  "stockCurrent": "Lagersaldo",
+  "buns": "Bröd",
+  "meat": "Kött",
+  "topping": "Tillbehör",
+  "sauce": "Sås"
 }

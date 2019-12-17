@@ -11,23 +11,48 @@
             <button id="backButtons" type="button" onclick="window.location = '/#/kitchen';"> {{uiLabels.goBack}} </button>
 
 
+        </div>
 
-        </div>    <div class = "row" align = "left">
+        <div class = "row">
+        <div class = "column">
 
-        <div class = "column left">
-            <h1>{{ uiLabels.stockCurrent }}</h1>
-            <div>
-                <OrderItem
-                        v-for="(order, key) in orders"
-                        v-if="order.status === 'done'"
-                        :order-id="key"
-                        v-on:cancelOrder="markStarted(key)"
-                        :order="order"
-                        :lang="lang"
-                        :ui-labels="uiLabels"
-                        :key="key">
-                </OrderItem>
-            </div>
+            <h3>{{ uiLabels.buns }}</h3>
+            <ul v-for="item in ingredients" v-if='item.category == 4' :key="item.ingredient_id">
+                <div class = "stocknr"> {{uiLabels.currentStock}}: {{item.stock}}</div>
+                <div v-if="lang_en"> {{item.ingredient_en}}</div>
+                <div v-if="lang_sv"> {{item.ingredient_sv}}</div>
+                <div id = "quantity"> {{item.quantity}} </div>
+            </ul>
+        </div>
+
+        <div class = "column">
+            <h3> {{ uiLabels.patty }} </h3>
+            <ul v-for = "item in ingredients" v-if = 'item.category == 1' :key="item.ingredient_id">
+                <div class = "stocknr"> {{uiLabels.currentStock}}: {{item.stock}}</div>
+                <div v-if="lang_en"> {{item.ingredient_en}} </div>
+                <div v-if="lang_sv"> {{item.ingredient_sv}} </div>
+                <div id = "quantity"> {{item.quantity}}  </div>
+            </ul>
+        </div>
+
+        <div class = "column">
+            <h3> {{ uiLabels.toppings }} </h3>
+            <ul v-for = "item in ingredients" v-if = 'item.category == 2' :key="item.ingredient_id" >
+                <div class = "stocknr"> {{uiLabels.currentStock}}: {{item.stock}}</div>
+                <div v-if="lang_sv"> {{item.ingredient_sv}} </div>
+                <div v-if="lang_en"> {{item.ingredient_en}} </div>
+                <div id = "quantity"> {{item.quantity}}  </div>
+            </ul>
+        </div>
+
+        <div class = "column">
+            <h3> {{ uiLabels.sauce }} </h3>
+            <ul v-for = "item in ingredients" v-if = 'item.category == 3' :key="item.ingredient_id">
+                <div class = "stocknr"> {{uiLabels.currentStock}}: {{item.stock}}</div>
+                <div v-if="lang_sv"> {{item.ingredient_sv}} </div>
+                <div v-if="lang_en"> {{item.ingredient_en}} </div>
+                <div id = "quantity"> {{item.quantity}}  </div>
+            </ul>
         </div>
     </div>
     </div>
@@ -56,6 +81,12 @@
         methods: {
             markDone: function (orderid) {
                 this.$store.state.socket.emit("orderDone", orderid);
+            },
+            addToOrder: function (item) {
+                this.chosenIngredients.push(item);
+            },
+            showOrder: function() {
+                this.orderAdded=!this.orderAdded;
             }
         }
     }
@@ -71,16 +102,28 @@
         color: dimgray;
     }
 
+    h3  {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 24pt;
+        color: black;
+    }
+
     .row {
+        /*text-align: center;*/
+        font-size: 16pt;
+        color: black;
         display: flex;
-        height: 90%;
+        height: 98%;
     }
     .column {
-        border: solid #5a1800;
-        border-width: 5px;
-        margin: -1px;
-        padding: 20px;
-        height: 1000px;
+        flex: 50%;
+        border: solid lightgray;
+        border-width: 3px;
+        margin: -2px;
+        padding: 15px;
+        overflow: scroll;
+        height: 550px;
     }
 
     .left {
