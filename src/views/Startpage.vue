@@ -4,23 +4,24 @@
       <h1 id="startHead"> {{uiLabels.welcomeSite}} </h1>
       <div id="flags">
         <button id='langButton' v-on:click='switchLang()'>
-          <img id='langPic' v-on:click='switchFlag()' v-if="flag_en" src= '@/assets/englishflag.jpg' width="30px" height="20px">
-          <img id='langPic' v-on:click='switchFlag()' v-if="flag_sv" src= '@/assets/swedishflag.jpg' width="30px" height="20px">
+          <img id='langPic' v-if="flag_en" src= '@/assets/englishflag.jpg' width="30px" height="20px">
+          <img id='langPic' v-if="flag_sv" src= '@/assets/swedishflag.jpg' width="30px" height="20px">
         </button>
       </div>
     </div>
 
   <div id = "buttons">
       <!-- <router-link :to="{ path:'/'}">{{uiLabels.eatHere}}</router-link> -->
-      <button class="startButtons" type="button" @click="$router.push({ path: '/ordering'})" > {{uiLabels.eatHere}}  </button>
+     <button class="startButtons" type="button" @click="$router.push({ path: '/ordering'})" > {{uiLabels.eatHere}}  </button>
       <button class="startButtons" type="button" @click="homeDelivery=true" > {{uiLabels.eatAway}} </button>
    </div>
    <div>
      <div class="input-container" v-if="homeDelivery">
        <input class="homeAdress" type="text" :placeholder="uiLabels.eatAway" v-model="$store.state.homeAdress">
-       <button class="orderHome" type="button" @click="$router.push({ path: '/ordering/?eat=home'})" > {{uiLabels.eatHere}}  </button>
+       <button class="orderHome" type="button" @click="$router.push('/ordering/?eat=home')" > {{uiLabels.eatHere}}  </button>
      </div>
    </div>
+
   </div>
 
 </template>
@@ -42,12 +43,12 @@
     data: function(){
       return {
         homeDelivery: false,
+
       }
     },
     methods: {
     },
     mounted(){
-
     }
   }
   </script>
@@ -57,7 +58,7 @@
   text-align: center;
 }
 .startpage {
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('~@/assets/background.jpg');
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('~@/assets/background.jpg');
   min-height: 300px;
   display: flex;
   flex-direction: column;

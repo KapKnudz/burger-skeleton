@@ -30,6 +30,10 @@
   "welcomeSite": "Welcome to the villain-nest",
   "totalPrice": "Total price",
   "parts": "pieces",
-  "goBack" : "Back",
-  "stockCurrent": "Current Stock"
+  "stockCurrent": "Current Stock",
+  "buns": "Buns",
+  "meat": "Patties",
+  "topping": "Toppings",
+  "sauce": "Sauces",
+  "doneorders": "Done orders"
 }

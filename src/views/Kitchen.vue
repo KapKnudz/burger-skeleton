@@ -3,23 +3,23 @@
 
     <div id="fixedCategoryTab">
     <button id='langButton' v-on:click='switchLang()'>
-      <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
-      <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
+      <img id='langPic' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
+      <img id='langPic' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
     </button>
 
-    <button id="backButtons" type="button" onclick="window.location = '/#/';"> {{uiLabels.goBack}} </button>
+      <button id="doneordersButton" type="button" onclick="window.location = '/#/doneorders';"> {{uiLabels.doneorders}} </button>
+      <button id="stockButton" type="button" onclick="window.location = '/#/stock';"> {{uiLabels.stockCurrent}} </button>
+      <button id="backButton" type="button" onclick="window.location = '/#/';"> {{uiLabels.goBack}} </button>
 
-      <button id="stockButtons" type="button" onclick="window.location = '/#/stock';"> {{uiLabels.stockCurrent}} </button>
+
 
     </div>
     <div class = "row" align = "center">
     <div class = "column left">
+      <h1>{{ uiLabels.ordersInQueue }}</h1>
       <div align = "left">
-
-        <h1>{{ uiLabels.ordersInQueue }}</h1>
-
         <OrderItemToPrepare
-                id = "order_in_que"
+                id = "orders_in_queue"
                 v-for="(order, key) in orders"
                 v-if="order.status === 'not-started'"
                 v-on:next="markStarted(key)"
@@ -32,14 +32,14 @@
       </div>
     </div>
 
-    <div class = "column left">
+    <div class = "column right">
+      <h1>{{ uiLabels.startedOrders }}</h1>
       <div align = "left">
-        <h1>{{ uiLabels.startedOrders }}</h1>
         <OrderItemToPrepare
                 id = "started_orders"
                 v-for="(order, key) in orders"
                 v-if="order.status === 'started'"
-                v-on:cancelOrder="markBack(key)"
+                v-on:back="markBack(key)"
                 v-on:next="markDone(key)"
                 :order-id="key"
                 :order="order"
@@ -50,6 +50,8 @@
       </div>
     </div>
 </div>
+
+
 
 
   </div>
@@ -104,6 +106,7 @@
   .row {
     display: flex;
     height: 90%;
+    color: black;
   }
   .column {
     border: solid #5a1800;
@@ -119,21 +122,46 @@
     overflow: scroll;
   }
 
-  #backButtons {
-    margin-left:95%;
+  #stockButton {
+    background-color: #grey;
+    border-radius: 5px;
+    border: 5px solid grey;
+    color: black;
+    font-size: 16pt;
+    text-transform: uppercase;
     text-align: center;
-    display: inline-flex;
-    justify-content: center;
-
+    margin-left: 20%;
+    margin-right: 1em;
+    font-family: 'Montserrat', sans-serif;
+    flex: 1 0 0;
   }
 
-  #stockButtons {
-    margin-left:10%;
+  #backButton {
+    background-color: #grey;
+    border-radius: 5px;
+    border: 5px solid grey;
+    color: black;
+    font-size: 16pt;
+    text-transform: uppercase;
     text-align: center;
-    display: inline-flex;
-    justify-content: center;
+    margin-left: 31%;
+    margin-right: 1em;
+    font-family: 'Montserrat', sans-serif;
+    flex: 1 0 0;
   }
-
+  #doneordersButton {
+  background-color: #grey;
+  border-radius: 5px;
+  border: 5px solid grey;
+  color: black;
+  font-size: 16pt;
+  text-transform: uppercase;
+  text-align: center;
+  margin-left: 7%;
+  margin-right: 1em;
+  font-family: 'Montserrat', sans-serif;
+  flex: 1 0 0;
+  }
   #langButton {
     position: absolute;
     top: 10px;

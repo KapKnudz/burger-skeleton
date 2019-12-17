@@ -2,20 +2,20 @@
 <div class="ingredient">
   <label>
 
-    {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-, {{item.stock}} pcs
+    {{item["ingredient_"+ lang]}}<br> {{item.selling_price}}:- <br> {{item.stock}} pcs
   </label>
   <div class="gridBackground">
-    <button v-if="moreThanZeroOrders===false" v-on:click="decreaseCounter">
-      <img v-on:click: src="@/assets/minus_sign.png" width=25px;>
-    </button>
-
-    {{ this.counter }}
-
-    <button v-on:click="incrementCounter">
-      <img v-on:click: src="@/assets/plus_sign.jpg" width=25px;>
-    </button>
-  </div>
-
+    <button class="minusButton" type="button" v-if="moreThanZeroOrders===false" v-on:click="decreaseCounter">-</button>
+<div class="counterClass">
+ {{ this.counter }}
+</div>
+    <button class="plusButton" type="button" v-on:click="incrementCounter">+</button>
+</div>
+<div class="allergies">
+<div class="allergiLaktos" v-show="item.milk_free===1"><img src="@/assets/Lactose.png" width="40px"> </div>
+<div class="allergiGluten" v-show="item.gluten_free===1"> <img src="@/assets/gluten2.png" width="40px"> </div>
+<div class="vegan" v-show="item.vegan===1"> <img src="@/assets/vegan.png" width="40px"> </div>
+</div>
 
 </div>
 </template>
@@ -58,15 +58,53 @@ export default {
 }
 </script>
 <style scoped>
+.ingredient {
+}
 .gridBackground {
-  margin-right: 0px;
-  color: white;
-  background-image: url('~@/assets/exampleImage.jpg');
-
+  display:flex;
+  justify-content: space-evenly;
+  font-size: 1.1em;
+  padding:1em;
+  color: black;
 
 }
+.minusButton {
+background-color:white;
+width:20%;
+border-radius:100%;
+border-width:0.1em;
+font-size:1em;
 
-#counterBackground {
+transition: all 0.4s ease 0s;
+}
+.minusButton:hover {
+  color: #ffffff !important;
+  background: #DC143C;
+  border-color: #F5F5F5 !important;
+  transition: all 0.4s ease 0s;
 
+}
+.plusButton {
+width:20%;
+border-radius:100%;
+border-width:0.1em;
+font-size:1em;
+}
+
+.plusButton:hover {
+  color: #ffffff !important;
+  background: #228B22;
+  border-color: #F5F5F5 !important;
+  transition: all 0.4s ease 0s;
+}
+.allergies {
+display:grid;
+grid-auto-flow: column;
+}
+.allergiGluten {
+}
+.allergiLaktos {
+}
+.vegan {
 }
 </style>

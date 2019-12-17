@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
 import DoneOrders from './views/DoneOrders.vue'
 import Startpage from './views/Startpage.vue'
+import Stock from './views/Stock.vue'
 
 Vue.use(Router)
 
@@ -48,7 +49,14 @@ let router = new Router({
       name: DoneOrders,
       component: DoneOrders
     },
-
+    {
+      path:'/Stock',
+      meta: {
+        title: 'Stock'
+      },
+      name: Stock,
+      component: Stock
+    },
 
   ]
 })

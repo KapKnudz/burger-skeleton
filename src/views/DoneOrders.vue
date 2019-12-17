@@ -4,11 +4,11 @@
 
     <div id="fixedCategoryTab">
       <button id='langButton' v-on:click='switchLang()'>
-        <img id='langPic' v-on:click='switchFlag()' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
-        <img id='langPic' v-on:click='switchFlag()' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
+        <img id='langPic' v-if='flag_en' src='@/assets/englishflag.jpg' width="30px" height="20px">
+        <img id='langPic' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
       </button>
 
-      <button id="backButtons" type="button" onclick="window.location = '/#/kitchen';"> {{uiLabels.goBack}} </button>
+      <button id="backButton" type="button" onclick="window.location = '/#/kitchen';"> {{uiLabels.goBack}} </button>
 
 
     </div>    <div class = "row" align = "left">
@@ -16,16 +16,16 @@
       <div class = "column left">
     <h1>{{ uiLabels.ordersFinished }}</h1>
     <div>
-      <OrderItem
+      <OrderItemToPrepare
               v-for="(order, key) in orders"
               v-if="order.status === 'done'"
               :order-id="key"
-              v-on:cancelOrder="markStarted(key)"
+              v-on:back="markBack(key)"
               :order="order"
               :lang="lang"
               :ui-labels="uiLabels"
               :key="key">
-      </OrderItem>
+      </OrderItemToPrepare>
     </div>
   </div>
   </div>
@@ -53,8 +53,8 @@
       }
     },
     methods: {
-      markDone: function (orderid) {
-        this.$store.state.socket.emit("orderDone", orderid);
+      markBack: function (orderid){
+        this.$store.state.socket.emit("orderStarted", orderid);
       }
     }
   }
@@ -71,6 +71,7 @@
   }
 
   .row {
+    color: black;
     display: flex;
     height: 90%;
   }
@@ -88,12 +89,19 @@
     overflow: scroll;
   }
 
-  #backButtons {
-    margin-left:95%;
+  #backButton {
+    margin-left:90%;
     text-align: center;
     display: inline-flex;
     justify-content: center;
-
+    background-color: #grey;
+    border-radius: 5px;
+    border: 5px solid grey;
+    color: black;
+    font-size: 16pt;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    flex: 1 0 0;
   }
   #langPic {
     height: 100%;
