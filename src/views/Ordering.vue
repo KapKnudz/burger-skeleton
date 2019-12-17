@@ -12,7 +12,7 @@
 
   <div id="placeOrderBox">
     <div v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
-      {{ingredCounter.name}}: {{ingredCounter.count}} {{uiLabels.parts}},
+     {{ingredCounter.name}}:  {{ingredCounter.count}}  {{uiLabels.parts}},
     </div>
     {{uiLabels.totalPrice}}: {{price}} kr
     <button id="placeOrderButton" type="button" v-on:click="placeOrderClick"> {{ uiLabels.placeOrder }} </button>
@@ -227,7 +227,7 @@ export default {
 #placeOrderBox {
   position: fixed;
   font-size: 24px;
-  color: white;
+  color: black;
   text-align:center;
   display:block;
   box-sizing:border-box;
@@ -334,9 +334,11 @@ export default {
   flex-wrap: wrap;
 }
 .ingredient-box {
+  text-align:center;
   padding:1em;
   width: 25%;
   display: flex;
+  
 }
 /*.ingredient-container > .ingredientBox {
 	display: flex;

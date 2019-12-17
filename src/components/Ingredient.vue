@@ -2,18 +2,14 @@
 <div class="ingredient">
   <label>
 
-    {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-, {{item.stock}} pcs
+    {{item["ingredient_"+ lang]}}<br> {{item.selling_price}}:- <br> {{item.stock}} pcs
   </label>
   <div class="gridBackground">
-    <button v-if="moreThanZeroOrders===false" v-on:click="decreaseCounter">
-      <img v-on:click: src="@/assets/minus_sign.png" width=25px;>
-    </button>
+    <button class="minusButton" type="button" v-if="moreThanZeroOrders===false" v-on:click="decreaseCounter">-</button>
 <div class="counterClass">
  {{ this.counter }}
 </div>
-    <button v-on:click="incrementCounter">
-      <img v-on:click: src="@/assets/plus_sign.jpg" width=25px;>
-    </button>
+    <button v-on:click="incrementCounter">+</button>
   </div>
 
 
@@ -58,18 +54,21 @@ export default {
 }
 </script>
 <style scoped>
+.ingredient {
+
+}
 .gridBackground {
   display:flex;
   justify-content: space-evenly;
   font-size: 1.1em;
   padding:1em;
   color: black;
+
+}
+.minusButton {
+width:2em;
 }
 .counterClass {
-
-}
-
-#counterBackground {
 
 }
 </style>
