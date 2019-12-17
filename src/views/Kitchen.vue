@@ -9,6 +9,8 @@
 
       <button id="stockButtons" type="button" onclick="window.location = '/#/stock';"> {{uiLabels.stockCurrent}} </button>
     <button id="backButtons" type="button" onclick="window.location = '/#/';"> {{uiLabels.goBack}} </button>
+      <button id="doneordersButtons" type="button" onclick="window.location = '/#/doneorders';"> {{uiLabels.doneorders}} </button>
+
 
     </div>
     <div class = "row" align = "center">
@@ -146,7 +148,19 @@
     font-family: 'Montserrat', sans-serif;
     flex: 1 0 0;
   }
-
+  #doneordersButtons {
+  background-color: #grey;
+  border-radius: 5px;
+  border: 5px solid grey;
+  color: black;
+  font-size: 16pt;
+  text-transform: uppercase;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 1em;
+  font-family: 'Montserrat', sans-serif;
+  flex: 1 0 0;
+  }
   #langButton {
     position: absolute;
     top: 10px;
