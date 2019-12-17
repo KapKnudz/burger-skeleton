@@ -7,9 +7,10 @@
       <img id='langPic' v-if='flag_sv' src='@/assets/swedishflag.jpg' width="30px" height="20px">
     </button>
 
-      <button id="stockButtons" type="button" onclick="window.location = '/#/stock';"> {{uiLabels.stockCurrent}} </button>
-    <button id="backButtons" type="button" onclick="window.location = '/#/';"> {{uiLabels.goBack}} </button>
-      <button id="doneordersButtons" type="button" onclick="window.location = '/#/doneorders';"> {{uiLabels.doneorders}} </button>
+      <button id="doneordersButton" type="button" onclick="window.location = '/#/doneorders';"> {{uiLabels.doneorders}} </button>
+      <button id="stockButton" type="button" onclick="window.location = '/#/stock';"> {{uiLabels.stockCurrent}} </button>
+      <button id="backButton" type="button" onclick="window.location = '/#/';"> {{uiLabels.goBack}} </button>
+
 
 
     </div>
@@ -121,7 +122,7 @@
     overflow: scroll;
   }
 
-  #stockButtons {
+  #stockButton {
     background-color: #grey;
     border-radius: 5px;
     border: 5px solid grey;
@@ -129,13 +130,13 @@
     font-size: 16pt;
     text-transform: uppercase;
     text-align: center;
-    margin-left: 10%;
+    margin-left: 20%;
     margin-right: 1em;
     font-family: 'Montserrat', sans-serif;
     flex: 1 0 0;
   }
 
-  #backButtons {
+  #backButton {
     background-color: #grey;
     border-radius: 5px;
     border: 5px solid grey;
@@ -143,12 +144,12 @@
     font-size: 16pt;
     text-transform: uppercase;
     text-align: center;
-    margin-left: 10%;
+    margin-left: 31%;
     margin-right: 1em;
     font-family: 'Montserrat', sans-serif;
     flex: 1 0 0;
   }
-  #doneordersButtons {
+  #doneordersButton {
   background-color: #grey;
   border-radius: 5px;
   border: 5px solid grey;
@@ -156,7 +157,7 @@
   font-size: 16pt;
   text-transform: uppercase;
   text-align: center;
-  margin-left: 10%;
+  margin-left: 7%;
   margin-right: 1em;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
