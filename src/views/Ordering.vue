@@ -12,13 +12,13 @@
 
   <div id="placeOrderBox">
     <div v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
-     {{ingredCounter.name}}:  {{ingredCounter.count}}  {{uiLabels.parts}},
+     {{ingredCounter.name}}:  {{ingredCounter.count}}x
     </div>
     {{uiLabels.totalPrice}}: {{price}} kr
     <button id="placeOrderButton" type="button" v-on:click="placeOrderClick"> <span> {{ uiLabels.placeOrder }} </span> </button>
   </div>
 
-  <modal name="payment">
+  <modal id="deliveryModal" name="payment">
     <form>
       <p><label for="firstname">Full name</label><br>
         <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last Name" size="30"></p>
@@ -41,12 +41,16 @@
         <input type="radio" name="gender" value="Male"> Male<br>
         <input type="radio" name="gender" value="Do not wish to provide"> Undisclosed<br>
       </p>
-      <button id="quantityutton" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
+      <button id="placeOrderButton" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
     </form>
   </modal>
-  <modal name="confirmation">
-    <button id="quantityuttontwo" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
-    Order confirmed
+  <modal id="eatHereModal" name="confirmation">
+  <h2 id="modalHeader">  Order confirmation </h2>
+  <div id="modalIngredients" v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
+   {{ingredCounter.name}}:  {{ingredCounter.count}}x
+  </div>
+<div id="modalPrice">  {{uiLabels.totalPrice}}: {{price}} kr </div>
+    <button id="placeOrderButtonModal" type="button" v-on:click="placeOrder()"> <span>{{ uiLabels.placeOrder }} </span> </button>
   </modal>
 
 
@@ -232,7 +236,7 @@ export default {
   box-sizing:border-box;
   height: 36.5%;
   margin-top:8%;
-  margin-left:85%;
+  margin-left:80%;
   border-top:4px solid rgb(196, 196, 196);
   border-left: 4px solid rgb(196, 196, 196);
   border-bottom: 6px solid rgb(196, 196, 196);
@@ -248,8 +252,6 @@ export default {
   font-size: 16pt;
   text-transform: uppercase;
   text-align: center;
-  margin-left: 1em;
-  margin-right: 1em;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
 }
@@ -274,19 +276,6 @@ export default {
    opacity: 1;
    right: 0;
  }
-#placeOrderButtontwo{
-  background-color: #grey;
-  border-radius: 5px;
-  border: 5px solid grey;
-  color: black;
-  font-size: 16pt;
-  text-transform: uppercase;
-  text-align: center;
-  margin-left: 1em;
-  margin-right: 1em;
-  font-family: 'Montserrat', sans-serif;
-  flex: 1 0 0;
-}
 
 #backButtons {
   margin-left:90%;
@@ -366,7 +355,60 @@ export default {
 .ingredient-container > .ingredientBox > .ingredientBox:nth-child(odd) {
 }
 */
+#deliveryModal {
+  overflow-y:scroll;
+  color:black;
+}
+#eatHereModal {
+  max-height:100%;
+  max-width:100%;
+  color:black;
+}
 
+#modalHeader {
+margin-left:28%;
+
+}
+#placeOrderButtonModal{
+  background-color: #grey;
+  border-radius: 5px;
+  border: 5px solid grey;
+  color: black;
+  font-size: 16pt;
+  text-transform: uppercase;
+  text-align: center;
+  margin-left:0%;
+  margin-top:0%;
+  font-family: 'Montserrat', sans-serif;
+  flex: 1 0 0;
+}
+#placeOrderButtonModal span {
+   cursor: pointer;
+   display: inline-block;
+   position: relative;
+   transition: 0.4s;
+ }
+#placeOrderButtonModal span:after {
+   content: '\00bb';
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   right: -20px;
+   transition: 0.5s;
+ }
+ #placeOrderButtonModal:hover span {
+   padding-right: 25px;
+ }
+#placeOrderButtonModal:hover span:after {
+   opacity: 1;
+   right: 0;
+ }
+#modalIngredients {
+font-size:1.2em;
+}
+#modalPrice {
+  font-size:1.5em;
+}
 .ingredient {
   border: 5px solid grey;
   padding: 0.8em;
@@ -375,6 +417,15 @@ export default {
   color: black;
   flex-grow: 1;
   background-color: white;
+}
+.allergiGluten {
+  color:black;
+}
+.allergiLaktos {
+  color:black;
+}
+.vegan {
+  color:black;
 }
 
 </style>

@@ -10,8 +10,12 @@
  {{ this.counter }}
 </div>
     <button class="plusButton" type="button" v-on:click="incrementCounter">+</button>
-  </div>
-
+</div>
+<div class="allergies">
+<div class="allergiLaktos" v-show="item.milk_free===1"><img src="@/assets/Lactose.png" width="40px"> </div>
+<div class="allergiGluten" v-show="item.gluten_free===1"> <img src="@/assets/gluten2.png" width="40px"> </div>
+<div class="vegan" v-show="item.vegan===1"> <img src="@/assets/vegan.png" width="40px"> </div>
+</div>
 
 </div>
 </template>
@@ -55,7 +59,6 @@ export default {
 </script>
 <style scoped>
 .ingredient {
-
 }
 .gridBackground {
   display:flex;
@@ -67,7 +70,7 @@ export default {
 }
 .minusButton {
 background-color:white;
-width:15%;
+width:20%;
 border-radius:100%;
 border-width:0.1em;
 font-size:1em;
@@ -82,18 +85,26 @@ transition: all 0.4s ease 0s;
 
 }
 .plusButton {
-width:15%;
+width:20%;
 border-radius:100%;
 border-width:0.1em;
 font-size:1em;
 }
+
 .plusButton:hover {
   color: #ffffff !important;
   background: #228B22;
   border-color: #F5F5F5 !important;
   transition: all 0.4s ease 0s;
 }
-.counterClass {
-
+.allergies {
+display:grid;
+grid-auto-flow: column;
+}
+.allergiGluten {
+}
+.allergiLaktos {
+}
+.vegan {
 }
 </style>
