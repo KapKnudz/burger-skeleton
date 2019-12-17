@@ -26,7 +26,7 @@
         </div>
 
         <div class = "column">
-            <h3> {{ uiLabels.patty }} </h3>
+            <h3> {{ uiLabels.meat }} </h3>
             <ul v-for = "item in ingredients" v-if = 'item.category == 1' :key="item.ingredient_id">
                 <div class = "stocknr"> {{uiLabels.currentStock}}: {{item.stock}}</div>
                 <div v-if="lang_en"> {{item.ingredient_en}} </div>
@@ -36,7 +36,7 @@
         </div>
 
         <div class = "column">
-            <h3> {{ uiLabels.toppings }} </h3>
+            <h3> {{ uiLabels.topping }} </h3>
             <ul v-for = "item in ingredients" v-if = 'item.category == 2' :key="item.ingredient_id" >
                 <div class = "stocknr"> {{uiLabels.currentStock}}: {{item.stock}}</div>
                 <div v-if="lang_sv"> {{item.ingredient_sv}} </div>
