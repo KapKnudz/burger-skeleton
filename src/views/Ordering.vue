@@ -15,7 +15,7 @@
      {{ingredCounter.name}}:  {{ingredCounter.count}}  {{uiLabels.parts}},
     </div>
     {{uiLabels.totalPrice}}: {{price}} kr
-    <button id="placeOrderButton" type="button" v-on:click="placeOrderClick"> {{ uiLabels.placeOrder }} </button>
+    <button id="placeOrderButton" type="button" v-on:click="placeOrderClick"> <span> {{ uiLabels.placeOrder }} </span> </button>
   </div>
 
   <modal name="payment">
@@ -226,9 +226,8 @@ export default {
 }
 #placeOrderBox {
   position: fixed;
-  font-size: 24px;
+  font-size: 18px;
   color: black;
-  text-align:center;
   display:block;
   box-sizing:border-box;
   height: 36.5%;
@@ -238,6 +237,7 @@ export default {
   border-left: 4px solid rgb(196, 196, 196);
   border-bottom: 6px solid rgb(196, 196, 196);
   border-color:white;
+  overflow-y:scroll;
 }
 
 #placeOrderButton{
@@ -253,6 +253,27 @@ export default {
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
 }
+#placeOrderButton span {
+   cursor: pointer;
+   display: inline-block;
+   position: relative;
+   transition: 0.4s;
+ }
+#placeOrderButton span:after {
+   content: '\00bb';
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   right: -20px;
+   transition: 0.5s;
+ }
+ #placeOrderButton:hover span {
+   padding-right: 25px;
+ }
+#placeOrderButton:hover span:after {
+   opacity: 1;
+   right: 0;
+ }
 #placeOrderButtontwo{
   background-color: #grey;
   border-radius: 5px;
@@ -265,11 +286,6 @@ export default {
   margin-right: 1em;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
-}
-
-#placeOrderButton:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 30px 0 rgba(0,0,0,0.19);
-    color:white;
 }
 
 #backButtons {
@@ -309,7 +325,6 @@ export default {
 
 }
 .categoryList button {
-
   background-color: #grey;
   border: 5px solid grey;
   text-transform: uppercase;
