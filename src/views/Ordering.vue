@@ -66,7 +66,7 @@
     </div>
 
 
-    <h1>{{ uiLabels.ingredients }}</h1>
+    <!-- <h1 id="ingredientTitle">{{ uiLabels.ingredients }}</h1>  HEADER FÖR INGERDIENTS-->
     <div class="ingredient-container">
       <div v-for="item in ingredients" class="ingredient-box" v-if="item.category===currentCategory">
         <Ingredient ref="ingredient" v-on:increment="addToOrder(item)" v-on:decrease="reduceOrder(item)" :count="item.counter" :item="item" :categoryNumber="currentCategory"
@@ -232,8 +232,8 @@ export default {
   display:block;
   box-sizing:border-box;
   height: 10em;
-  margin-top:5em;
-  margin-left:50em;
+  margin-top:8%;
+  margin-left:85%;
   border-top:4px solid rgb(196, 196, 196);
   border-left: 4px solid rgb(196, 196, 196);
   border-bottom: 6px solid rgb(196, 196, 196);
@@ -338,7 +338,6 @@ export default {
   padding:1em;
   width: 25%;
   display: flex;
-  
 }
 /*.ingredient-container > .ingredientBox {
 	display: flex;
