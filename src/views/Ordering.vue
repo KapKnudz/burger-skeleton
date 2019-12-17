@@ -231,6 +231,7 @@ export default {
 #placeOrderBox {
   position: fixed;
   font-size: 18px;
+  font-variant: small-caps;
   color: black;
   display:block;
   box-sizing:border-box;
@@ -316,7 +317,8 @@ export default {
 .categoryList button {
   background-color: #grey;
   border: 5px solid grey;
-  text-transform: uppercase;
+  font-variant: small-caps;
+  /*text-transform: uppercase;*/
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
@@ -328,8 +330,8 @@ export default {
 }
 .categoryList button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 30px 0 rgba(0,0,0,0.19);
-  color:white;
-  text-shadow: 3px 3px rgba(0,0,0,0.24);
+  color: #a6a6a6;
+  text-shadow: 3px 3px rgba(0,0,0,0.05);
 }
 .ingredient-container {
   display: flex;
@@ -337,6 +339,7 @@ export default {
 }
 .ingredient-box {
   text-align:center;
+  font-variant: small-caps;
   padding:1em;
   width: 25%;
   display: flex;

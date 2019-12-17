@@ -88,6 +88,12 @@
   justify-content: center;
 }
 
+#buttons button:hover {
+  box-shadow: 12px 12px 16px 0 rgba(0,0,0,0.24), 0 17px 30px 0 rgba(0,0,0,0.19);
+  color: #a6a6a6;
+  text-shadow: 3px 3px rgba(0,0,0,0.05);
+}
+
 .startButtons{
   background-color: #grey;
   border-radius: 5px;
