@@ -41,11 +41,11 @@
         <input type="radio" name="gender" value="Male"> Male<br>
         <input type="radio" name="gender" value="Do not wish to provide"> Undisclosed<br>
       </p>
-      <button id="placeOrderButton" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
+      <button id="quantityutton" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
     </form>
   </modal>
   <modal name="confirmation">
-    <button id="placeOrderButtontwo" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
+    <button id="quantityuttontwo" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
     Order confirmed
   </modal>
 
