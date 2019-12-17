@@ -9,7 +9,7 @@
 <div class="counterClass">
  {{ this.counter }}
 </div>
-    <button v-on:click="incrementCounter">+</button>
+    <button class="plusButton" type="button" v-on:click="incrementCounter">+</button>
   </div>
 
 
@@ -66,7 +66,32 @@ export default {
 
 }
 .minusButton {
-width:2em;
+background-color:white;
+width:15%;
+border-radius:100%;
+border-width:0.1em;
+font-size:1em;
+
+transition: all 0.4s ease 0s;
+}
+.minusButton:hover {
+  color: #ffffff !important;
+  background: #DC143C;
+  border-color: #F5F5F5 !important;
+  transition: all 0.4s ease 0s;
+
+}
+.plusButton {
+width:15%;
+border-radius:100%;
+border-width:0.1em;
+font-size:1em;
+}
+.plusButton:hover {
+  color: #ffffff !important;
+  background: #228B22;
+  border-color: #F5F5F5 !important;
+  transition: all 0.4s ease 0s;
 }
 .counterClass {
 

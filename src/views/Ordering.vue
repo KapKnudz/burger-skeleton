@@ -231,7 +231,7 @@ export default {
   text-align:center;
   display:block;
   box-sizing:border-box;
-  height: 10em;
+  height: 36.5%;
   margin-top:8%;
   margin-left:85%;
   border-top:4px solid rgb(196, 196, 196);
@@ -311,13 +311,11 @@ export default {
 .categoryList button {
 
   background-color: #grey;
-  border-radius: 5px;
   border: 5px solid grey;
   text-transform: uppercase;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
-  width: 200px;
   padding: 40px;
   border-top-right-radius: 4em;
   border-top-left-radius:1em;
