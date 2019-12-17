@@ -328,6 +328,11 @@ export default {
   width: 25%;
   display: flex;
 }
+
+.payment{
+  color: black;
+  padding: 20px;
+}
 /*.ingredient-container > .ingredientBox {
 	display: flex;
 	flex-wrap: wrap;
