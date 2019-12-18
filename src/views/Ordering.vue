@@ -20,27 +20,27 @@
 
   <modal id="deliveryModal" name="payment">
     <form>
-      <p><label for="firstname">Full name</label><br>
-        <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last Name" size="30"></p>
-      <p><label for="email">Email address</label><br>
-        <input type="email" id="email" name="em" required="required" placeholder="Skurk.skurksson@skurson.com" size="30"></p>
-      <p><label for="Street">Street name</label><br>
-        <input type="text" id="streetname" name="sn" placeholder="Street name" size="30"></p>
-      <p><label for="House">House number</label><br>
-        <input type="number" id="House" name="Ho" placeholder="House number"></p>
-      <p><label for="paymentmethod">Payment method</label><br>
-        <select id="paymentmethod" name="pmmt">
-          <option>Credit card</option>
-          <option>Swish</option>
-          <option>Invoice (Klarna)</option>
-          <option>Cash on delivery</option>
-        </select></p>
-      <p id="gender">
-        <label for="gender">Please select your gender:</label><br>
-        <input type="radio" name="gender" value="Female"> Female<br>
-        <input type="radio" name="gender" value="Male"> Male<br>
-        <input type="radio" name="gender" value="Do not wish to provide"> Undisclosed<br>
-      </p>
+        <p><label for="firstname">Full name</label><br>
+          <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last Name" size="30"></p>
+        <p><label for="email">Email address</label><br>
+          <input type="email" id="email" name="em" required="required" placeholder="Skurk.skurksson@skurson.com" size="30"></p>
+        <p><label for="Street">Street name</label><br>
+          <input type="text" id="streetname" name="sn" placeholder="Street name" size="30"></p>
+        <p><label for="House">House number</label><br>
+          <input type="number" id="House" name="Ho" placeholder="House number"></p>
+        <p><label for="paymentmethod">Payment method</label><br>
+          <select id="paymentmethod" name="pmmt">
+            <option>Credit card</option>
+            <option>Swish</option>
+            <option>Invoice (Klarna)</option>
+            <option>Cash on delivery</option>
+          </select></p>
+        <p id="gender">
+          <label for="gender">Please select your gender:</label><br>
+          <input type="radio" name="gender" value="Female"> Female<br>
+          <input type="radio" name="gender" value="Male"> Male<br>
+          <input type="radio" name="gender" value="Do not wish to provide"> Undisclosed<br>
+        </p>
       <button id="placeOrderButton" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
     </form>
   </modal>
@@ -229,13 +229,14 @@ export default {
   text-align: center;
 }
 #placeOrderBox {
-  background-color:#f2f2f2;
+  /*background-color:#f2f2f2;*/
+  background-color: transparent;
   border-color: inherit;
   position: fixed;
   padding-left: 10px;
   padding-top: 10px;
   padding-right: 10px;
-  font-size: 18px;
+  font-size: 16pt;
   font-variant: small-caps;
   background-color:lightgray;
   color: black;
@@ -247,7 +248,7 @@ export default {
   width: 32%;
   border:4px solid rgb(196, 196, 196);
   border-color:white;
-  overflow-y:scroll;
+  overflow-y:auto;
 }
 
 #placeOrderButton{
@@ -262,6 +263,7 @@ export default {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
+  margin-bottom: 3%;
 }
 #placeOrderButton span {
    cursor: pointer;
@@ -364,35 +366,35 @@ export default {
   color: black;
   padding: 20px;
 }
-/*.ingredient-container > .ingredientBox {
-	display: flex;
-	flex-wrap: wrap;
-  text-align: center;
-}
-.ingredient-container > .ingredientBox > .ingredientBox {
-	flex-grow: 1;
-	width: 33%;
-}
-.ingredient-container > .ingredientBox> .ingredientBox :nth-child(even) {
-}
-.ingredient-container > .ingredientBox > .ingredientBox:nth-child(odd) {
-}
-*/
+
 #deliveryModal {
-  overflow-y:scroll;
+  position:fixed;
+  max-height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
   color:black;
+  z-index:1;
 }
 #eatHereModal {
-  max-height:100%;
-  max-width:100%;
+  position: fixed; /* Stay in place */
+  z-index: 1;
+  width: 100%; /* Full width */
+  max-height: 100%; /* Full height */
+  overflow-y: scroll; /* Enable scroll if needed */
   color:black;
-  overflow-y:auto;
+  animation-name: animatetop;
+  animation-duration: 0.8s
+}
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
 }
 
 #modalHeader {
 margin-left:28%;
-
+overflow:auto;
 }
+
 #placeOrderButtonModal{
   background-color: #grey;
   border-radius: 5px;
