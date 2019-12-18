@@ -232,6 +232,7 @@ export default {
   position: fixed;
   font-size: 18px;
   font-variant: small-caps;
+  background-color:lightgray;
   color: black;
   display:block;
   box-sizing:border-box;
@@ -293,6 +294,11 @@ export default {
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
 }
+#backButtons:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 30px 0 rgba(0,0,0,0.19);
+  color: #a6a6a6;
+  text-shadow: 3px 3px rgba(0,0,0,0.05);
+}
 #langButton {
   position: absolute;
   top: 30px;
@@ -318,14 +324,14 @@ export default {
   background-color: #grey;
   border: 5px solid grey;
   font-variant: small-caps;
-  /*text-transform: uppercase;*/
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
-  padding: 40px;
-  border-top-right-radius: 4em;
-  border-top-left-radius:1em;
+  padding: 25px;
+  border-top-right-radius:7em;
+  border-top-left-radius:4em;
   border-top-style:groove;
+  margin:0.05em;
   font-size: 1.3em;
 }
 .categoryList button:hover {
@@ -414,8 +420,9 @@ margin-left:28%;
 #modalIngredients {
 font-size:1.2em;
 }
+
 #modalPrice {
-  font-size:1.5em;
+
 }
 .ingredient {
   border: 5px solid grey;
