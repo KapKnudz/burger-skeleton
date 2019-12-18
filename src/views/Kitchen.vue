@@ -17,6 +17,11 @@
     <div class = "row" align = "center">
     <div class = "column left">
       <h1>{{ uiLabels.ordersInQueue }}</h1>
+
+      <div v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
+       {{ingredCounter.name}}:  {{ingredCounter.count}}x <!-- Det här är funktion för x orders  (MEN VISAS EJ FÖR TILLFÄLLET) -->
+
+      </div>
       <div align = "left">
         <OrderItemToPrepare
                 id = "orders_in_queue"
@@ -77,6 +82,23 @@
         price: 0
       }
     },
+    computed: {
+      countAllIngredients: function() {
+        let ingredientTuples = []
+        for (let i = 0; i < this.chosenIngredients.length; i += 1) {
+          ingredientTuples[i] = {};
+          ingredientTuples[i].name = this.chosenIngredients[i]['ingredient_' + this.lang];
+          ingredientTuples[i].count = this.countNumberOfIngredients(this.chosenIngredients[i].ingredient_id);
+        }
+        let allIngredients = Array.from(new Set(ingredientTuples.map(arrayName => arrayName.name))).map(name => {
+          return {
+            name: name,
+            count: ingredientTuples.find(arrayName => arrayName.name === name).count
+          };
+        });
+        return allIngredients;
+      }
+    },
     methods: {
       markDone: function (orderid) {
         this.$store.state.socket.emit("orderDone", orderid);
@@ -86,6 +108,37 @@
       },
       markBack: function (orderid){
         this.$store.state.socket.emit("orderNotStarted", orderid);
+      },
+      placeOrder: function() {
+        var i,
+          //Wrap the order in an object
+          order = {
+            ingredients: this.chosenIngredients,
+            price: this.price
+
+          };
+        // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+        this.$store.state.socket.emit('order', {
+          order: order
+        });
+
+        //set all counters to 0. Notice the use of $refs
+        for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+          this.$refs.ingredient[i].resetCounter();
+        }
+        this.price = 0;
+        this.chosenIngredients = [];
+        this.allIIngredients.clear
+      },
+      countNumberOfIngredients: function(id) {
+        let counter = 0;
+        for (var amountOfIngred in this.chosenIngredients) {
+          //Now we have an array of ingredients in an order which is checked with the id that being sent from countAllIngredients in the call
+          if (this.chosenIngredients[amountOfIngred].ingredient_id === id) {
+            counter += 1;
+          }
+        }
+        return counter;
       }
     }
   }
