@@ -15,7 +15,7 @@
      {{ingredCounter.name}}:  {{ingredCounter.count}}x
     </div>
     {{uiLabels.totalPrice}}: {{price}} kr
-    <button id="placeOrderButton" type="button" v-on:click="placeOrderClick"> <span> {{ uiLabels.placeOrder }} </span> </button>
+    <button id="placeOrderButton" type="button" v-on:click="placeOrderClick" style="float:right"> <span> {{ uiLabels.placeOrder }} </span> </button>
   </div>
 
   <modal id="deliveryModal" name="payment">
@@ -232,27 +232,32 @@ export default {
   background-color:#f2f2f2;
   border-color: inherit;
   position: fixed;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
   font-size: 18px;
   font-variant: small-caps;
   background-color:lightgray;
   color: black;
   display:block;
   box-sizing:border-box;
-  height: 36.5%;
-  margin-top:8%;
-  margin-left:80%;
-  margin-right: 5%;
+  height: 44%;
+  margin-top:5%;
+  margin-left:64%;
+  width: 32%;
   border:4px solid rgb(196, 196, 196);
   border-color:white;
   overflow-y:scroll;
 }
 
 #placeOrderButton{
+  position: sticky;
+  bottom: -100px;
   background-color: #grey;
   border-radius: 5px;
-  border: 5px solid grey;
+  border: 3px solid grey;
   color: black;
-  font-size: 16pt;
+  font-size: 14pt;
   text-transform: uppercase;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
@@ -282,6 +287,7 @@ export default {
 
 #backButtons {
   margin-left:90%;
+  margin-top: .5%;
   text-align: center;
   display: inline-flex;
   justify-content: left;
@@ -313,12 +319,14 @@ export default {
     height: 100%;
   }
 .all-ingredients {
-  margin-right: 400px;
-  margin-bottom: 100px;
+  margin-right: 30%;
+  margin-bottom: 5%;
+  margin-left:1%;
 }
 .categoryList {
   display: flex;
   flex-direction: row;
+  margin-right:15%;
 
 }
 .categoryList button {
@@ -328,7 +336,7 @@ export default {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
-  padding: 25px;
+  padding: 30px;
   border-top-right-radius: 4em;
   border-top-left-radius:1em;
   border-top-style:groove;
@@ -378,6 +386,7 @@ export default {
   max-height:100%;
   max-width:100%;
   color:black;
+  overflow-y:auto;
 }
 
 #modalHeader {
