@@ -229,6 +229,8 @@ export default {
   text-align: center;
 }
 #placeOrderBox {
+  background-color:#f2f2f2;
+  border-color: inherit;
   position: fixed;
   font-size: 18px;
   font-variant: small-caps;
@@ -238,9 +240,8 @@ export default {
   height: 36.5%;
   margin-top:8%;
   margin-left:80%;
-  border-top:4px solid rgb(196, 196, 196);
-  border-left: 4px solid rgb(196, 196, 196);
-  border-bottom: 6px solid rgb(196, 196, 196);
+  margin-right: 5%;
+  border:4px solid rgb(196, 196, 196);
   border-color:white;
   overflow-y:scroll;
 }
@@ -322,7 +323,7 @@ export default {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
-  padding: 40px;
+  padding: 25px;
   border-top-right-radius: 4em;
   border-top-left-radius:1em;
   border-top-style:groove;
@@ -385,8 +386,8 @@ margin-left:28%;
   font-size: 16pt;
   text-transform: uppercase;
   text-align: center;
-  margin-left:0%;
-  margin-top:0%;
+  margin-left:5%;
+  margin-top:5%;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
 }
@@ -413,9 +414,11 @@ margin-left:28%;
  }
 #modalIngredients {
 font-size:1.2em;
+font-variant: small-caps;
 }
 #modalPrice {
   font-size:1.5em;
+  font-variant: small-caps;
 }
 .ingredient {
   border: 5px solid grey;
