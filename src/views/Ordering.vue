@@ -19,7 +19,7 @@
   </div>
 
   <modal id="deliveryModal" name="payment">
-    <form>
+    <form class="modalOverlay">
         <p><label for="firstname">Full name</label><br>
           <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last Name" size="30"></p>
         <p><label for="email">Email address</label><br>
@@ -367,14 +367,6 @@ export default {
   padding: 20px;
 }
 
-#deliveryModal {
-  position:fixed;
-  max-height: 100%;
-  max-width: 100%;
-  overflow-y: auto;
-  color:black;
-  z-index:1;
-}
 #eatHereModal {
   position: fixed; /* Stay in place */
   z-index: 1;
@@ -437,6 +429,19 @@ font-variant: small-caps;
 #modalPrice {
   font-size:1.5em;
   font-variant: small-caps;
+}
+#deliveryModal {
+
+}
+
+.modalOverlay {
+  display: flex;
+  flex-wrap:wrap;
+  width: 100%;
+  height: 100%;
+  background: #00000094;
+  z-index: 999;
+  transition: opacity 0.2s ease;
 }
 .ingredient {
   border: 5px solid grey;
