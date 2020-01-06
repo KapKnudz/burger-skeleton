@@ -23,7 +23,7 @@
         <p><label for="firstname">Full name</label><br>
           <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last Name" size="30"></p>
         <p><label for="email">Email address</label><br>
-          <input type="email" id="email" name="em" required="required" placeholder="Skurk.skurksson@skurson.com" size="30"></p>
+          <input type="email" id="email" name="em" required="required" placeholder="Email address" size="30"></p>
         <p><label for="Street">Street name</label><br>
           <input type="text" id="streetname" name="sn" placeholder="Street name" size="30"></p>
         <p><label for="House">House number</label><br>
@@ -41,7 +41,7 @@
           <input type="radio" name="gender" value="Male"> Male<br>
           <input type="radio" name="gender" value="Do not wish to provide"> Undisclosed<br>
         </p>
-      <button id="placeOrderButton" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
+      <button id="placeOrderButtonModalTakeAway" type="button" v-on:click="placeOrder()"> {{ uiLabels.placeOrder }} </button>
     </form>
   </modal>
   <modal id="eatHereModal" name="confirmation">
@@ -50,7 +50,7 @@
    {{ingredCounter.name}}:  {{ingredCounter.count}}x
   </div>
 <div id="modalPrice">  {{uiLabels.totalPrice}}: {{price}} kr </div>
-    <button id="placeOrderButtonModal" type="button" v-on:click="placeOrder()"> <span>{{ uiLabels.placeOrder }} </span> </button>
+    <button id="placeOrderButtonModalEatHere" type="button" v-on:click="placeOrder()"> <span>{{ uiLabels.placeOrder }} </span> </button>
   </modal>
 
 
@@ -387,7 +387,7 @@ margin-left:28%;
 overflow:auto;
 }
 
-#placeOrderButtonModal{
+#placeOrderButtonModalEatHere{
   background-color: #grey;
   border-radius: 5px;
   border: 5px solid grey;
@@ -400,13 +400,13 @@ overflow:auto;
   font-family: 'Montserrat', sans-serif;
   flex: 1 0 0;
 }
-#placeOrderButtonModal span {
+#placeOrderButtonModalEatHere span {
    cursor: pointer;
    display: inline-block;
    position: relative;
    transition: 0.4s;
  }
-#placeOrderButtonModal span:after {
+#placeOrderButtonModalEatHere span:after {
    content: '\00bb';
    position: absolute;
    opacity: 0;
@@ -414,13 +414,47 @@ overflow:auto;
    right: -20px;
    transition: 0.5s;
  }
- #placeOrderButtonModal:hover span {
+ #placeOrderButtonModalEatHere:hover span {
    padding-right: 25px;
  }
-#placeOrderButtonModal:hover span:after {
+#placeOrderButtonModalEatHere:hover span:after {
    opacity: 1;
    right: 0;
  }
+ #placeOrderButtonModalTakeAway{
+   background-color: #grey;
+   border-radius: 5px;
+   border: 5px solid grey;
+   color: black;
+   font-size: 16pt;
+   text-transform: uppercase;
+   text-align: center;
+   margin-left:75%;
+   margin-top:-5%;
+   font-family: 'Montserrat', sans-serif;
+   flex: 1 0 0;
+ }
+ #placeOrderButtonModalTakeAway span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.4s;
+  }
+ #placeOrderButtonModalTakeAway span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  #placeOrderButtonModalTakeAway:hover span {
+    padding-right: 25px;
+  }
+ #placeOrderButtonModalTakeAway:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
 #modalIngredients {
 font-size:1.2em;
 font-variant: small-caps;
@@ -431,7 +465,6 @@ font-variant: small-caps;
   font-variant: small-caps;
 }
 #deliveryModal {
-
 }
 
 .modalOverlay {
@@ -441,7 +474,8 @@ font-variant: small-caps;
   height: 100%;
   background: #00000094;
   z-index: 999;
-  transition: opacity 0.2s ease;
+  justify-content: space-evenly;
+  align-content:space-evenly;
 }
 .ingredient {
   border: 5px solid grey;
