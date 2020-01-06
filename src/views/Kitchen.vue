@@ -10,18 +10,14 @@
       <button id="doneordersButton" type="button" onclick="window.location = '/#/doneorders';"> {{uiLabels.doneorders}} </button>
       <button id="stockButton" type="button" onclick="window.location = '/#/stock';"> {{uiLabels.stockCurrent}} </button>
       <button id="backButton" type="button" onclick="window.location = '/#/';"> {{uiLabels.goBack}} </button>
-
-
+      
 
     </div>
     <div class = "row" align = "center">
     <div class = "column left">
       <h1>{{ uiLabels.ordersInQueue }}</h1>
 
-      <div v-for="ingredCounter in countAllIngredients" v-if="ingredCounter.count>0" :key="countAllIngredients.indexOf(ingredCounter)">
-       {{ingredCounter.name}}:  {{ingredCounter.count}}x <!-- Det här är funktion för x orders  (MEN VISAS EJ FÖR TILLFÄLLET) -->
 
-      </div>
       <div align = "left">
         <OrderItemToPrepare
                 id = "orders_in_queue"

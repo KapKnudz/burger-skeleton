@@ -105,25 +105,25 @@
     h3  {
         text-transform: uppercase;
         text-align: center;
-        font-size: 24pt;
+        font-size: 20pt;
         color: black;
     }
 
     .row {
         /*text-align: center;*/
-        font-size: 16pt;
+        font-size: 14pt;
         color: black;
         display: flex;
         height: 98%;
     }
     .column {
-        flex: 50%;
-        border: solid lightgray;
-        border-width: 3px;
-        margin: -2px;
-        padding: 15px;
+        flex: 53%;
+        border: gray;
+        border-width: 4px;
+        margin: -3px;
+        padding: 16px;
         overflow: scroll;
-        height: 550px;
+        height: 600px;
     }
 
     .left {
